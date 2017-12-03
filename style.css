@@ -1,0 +1,173 @@
+/* 
+Theme Name:		 MCPlayer
+Theme URI:		 http://childthemegenerator.com/
+Description:	 MCPlayer theme
+Author:			 jerl92
+Author URI:		 http://childthemegenerator.com/
+Template:		 chichi
+Version:		 1.0.0
+Text Domain:	 chichi-child
+-------------------------------------------------------------- */ 
+
+/* =Theme customization starts here
+------------------------------------------------------- */
+
+.wrap {
+    max-width: 100%;
+    width: calc(100% - 20px);
+}
+
+.made-with-love {
+    font-size: 12px;
+    margin: 5px;
+    float: right;
+}
+
+#secondary {
+    display: table;
+}
+
+.mejs-controls .mejs-button button {
+    min-width: 0;
+}
+
+#colophon {
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  /*  box-shadow: -0.1px -0.1px 25px rgba(0,0,0,.25); */
+    background-color: #fff;
+    z-index: 9999;
+}
+
+#colophon.site-title.cloned {
+    font-size: 1rem;
+}
+
+.site-header.cloned {
+    padding: 2.5px 0;
+    margin-bottom: calc(2rem - 12.5px);
+    box-shadow: 0.1px 0.1px 25px rgba(0,0,0,.25);
+}
+
+.site-header {
+    background-color: #fff;
+    box-shadow: 0.05px 0.05px 15px rgba(0,0,0,.15);
+    margin-bottom: 5px;
+}
+
+.hide-player {
+    display: none;
+    border-top: none;
+}
+
+
+.hide-player-border {
+    border-top: none !important;
+}
+
+
+.widget-title {
+    border-bottom: 1px solid #bdbdbd !important;
+    margin: 15px 5px 10px 0;
+    padding-left: 5px;
+    font-weight: 500;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .posts-navigation .prev, .posts-navigation .next, .comments-previous a, .comments-next a, a.btn {
+    background-color: rgb(63, 63, 63);
+}
+
+#album-class-artist-img {
+    border: 1px solid rgba(0,0,0,.25);
+}
+
+#album-class-artist-img:hover {
+    border: .5px solid rgba(0,0,0,.5);
+    opacity: 0.75;
+    box-shadow: 5px 7.5px 10px rgba(0,0,0,.5);
+    transform: scale(1.01);
+}       
+
+.search-field {
+    width: calc(100% - 100px);
+}
+
+.edit-link {
+    display: none;
+}
+
+.entry-save-for-later {
+    display: inline-flex;
+    width: 100%;
+}
+
+#album-class-artist-list tbody {
+    display: table;
+    width: 100%;
+}
+
+#wrap-player {
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: -0.1px -0.1px 25px rgba(0,0,0,.25);
+    position: fixed !important;
+    bottom: 0 !important;
+    background-color: #fff;
+    z-index: 9999;
+    width: 100% !important;
+}
+
+.entry-meta-data-lyric {
+    display: table;
+    width: 100%;
+}
+
+a:focus {
+    outline: none;
+}
+
+@media only screen and (min-width: 450px) {
+    .content-area {
+        width: 75%;
+        max-width: 100%;
+        float: left;
+        padding-right: 5px;
+    }
+    .site-content .widget-area {
+        width: 25%;
+        max-width: 100%;
+        float: right;
+    }
+    #album-class-artist-wraper ul:nth-child(4) {
+        clear: right;
+    }    
+    #album-class-artist-wraper ul:nth-child(5) {
+        clear: left;
+    }
+    #album-class-artist-wraper ul:nth-child(8) {
+        clear: right;
+    }
+    #album-class-artist-wraper ul:nth-child(9) {
+        clear: left;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .wrap {
+        max-width: 100%;
+        width: 98%;
+    }
+    #album-class-artist-wraper {
+        width: 100%;
+        padding: 0;
+    }
+    #album-class-artist {
+        width: 45%;
+        margin: 5px 2.5%;
+    }
+    .site-content .widget-area {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+        padding-bottom: 25px;
+        padding-right: 0px;
+    }
+}

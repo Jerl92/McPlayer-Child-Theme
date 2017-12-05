@@ -1,0 +1,2 @@
+# MCPlayer-Theme
+MCPlayer Theme

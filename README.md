@@ -1,3 +1,3 @@
 MCPlayer Theme
 
-<img src="https://www.hostingpics.net/viewer.php?id=323121albumtheme.jpg" alt="Gutenberg editing" data-canonical-src="https://www.hostingpics.net/viewer.php?id=323121albumtheme.jpg" style="max-width:100%;">
+<img src="https://img15.hostingpics.net/pics/323121albumtheme.jpg" alt="Gutenberg editing" data-canonical-src="https://img15.hostingpics.net/pics/323121albumtheme.jpg" style="max-width:100%;">

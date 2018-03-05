@@ -18,8 +18,11 @@
 		if ( is_single() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
 			echo '<div class="entry-meta-save-to-playlist">';
+				echo '<div style="padding-right: 25px">';
 				echo do_shortcode( '[simplicity-save-for-later-loop]' );
+				echo '</div><div>';
 				echo do_shortcode( '[add-play-now id="' . get_the_id() . '"]' );
+				echo '</div>';
 			echo '</div>';
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );

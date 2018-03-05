@@ -27,6 +27,10 @@ Text Domain:	 chichi-child
     display: table;
 }
 
+#remove-all-btn a:visited, #remove-all-btn a:active, #remove-all-btn a:focus {
+    color: #fff !important;
+}
+
 .mejs-controls .mejs-button button {
     min-width: 0;
 }
@@ -96,8 +100,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 }
 
 .entry-save-for-later {
-    display: inline-flex;
     width: 100%;
+    display: flex;
 }
 
 #album-class-artist-list tbody {
@@ -124,7 +128,7 @@ a:focus {
     outline: none;
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 518px) {
     .content-area {
         width: 75%;
         max-width: 100%;
@@ -170,4 +174,24 @@ a:focus {
         padding-bottom: 25px;
         padding-right: 0px;
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #cccccc; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(24, 24, 24); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(75, 75, 75); 
 }

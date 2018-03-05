@@ -122,7 +122,7 @@ get_header(); ?>
 							}
 
 							?>
-							<ul id="album-class-artist">
+							<ul id="album-class-artist" class="album-<?php echo $attachment->ID; ?>">
 								<li>
 									<a href="<?php echo $album_link . '&#idalbum'; ?>">
 										<img id="album-class-artist-img" src="<?php echo $url; ?>"></img>

@@ -9,7 +9,7 @@ function stickIt_($) {
 
     var scrollIntervalID = setInterval(stickIt, 1);
 
-    function stickIt() {
+    function stickIt($) {
 
       var orgElementPos = jQuery('.original').offset();
       var orgElementTop = 1;
@@ -54,7 +54,7 @@ function stickIt_($) {
   });
 
   
-  function stickIt_resize() {
+  function stickIt_resize($) {
 
     var orgElementPos = jQuery('.original').offset();
     var orgElementTop = 1;
@@ -93,6 +93,6 @@ function stickIt_($) {
     }
   }
 
-  jQuery(window).resize(function() {
-    stickIt_resize();
+  jQuery(window).resize(function($) {
+    stickIt_resize($);
   });

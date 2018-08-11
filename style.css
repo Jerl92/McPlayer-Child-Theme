@@ -131,7 +131,15 @@ a:focus {
     outline: none;
 }
 
-@media only screen and (min-width: 518px) {
+@media only screen and (min-width: 631px) and (max-width: 1654px) {
+    .page-music {
+        width: 19.45%;
+        padding: 0 0.25%;
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 630px) {
     .content-area {
         width: 75%;
         max-width: 100%;

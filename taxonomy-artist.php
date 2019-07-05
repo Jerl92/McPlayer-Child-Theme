@@ -174,7 +174,7 @@ get_header(); ?>
 						if ($_GET['album'] != '') { ?>				
  							<tr style='width: 100%; height: 60px;'>
  	                           <td id="album-class-artist-list-id-<?php echo get_the_id(); ?>" style='text-align: center; width: 30px; padding: 0 10px;'>
-									<?php echo do_shortcode( '[simplicity-save-for-later-loop]' ); ?>
+									<?php echo do_shortcode( '[simplicity-save-for-later-loop id="' . get_the_id() . '"]' ); ?>
 								</td>
 								<td style='width: 30px; display: inline-flex; text-align: center; margin auto 0; padding: 0 5px;'>
 									<?php echo do_shortcode( '[add-play-now id="' . get_the_id() . '"]' ); ?>
@@ -220,3 +220,4 @@ get_header(); ?>
 <?php
 get_sidebar();
 get_footer();
+?>

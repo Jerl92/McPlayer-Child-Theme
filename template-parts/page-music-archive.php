@@ -51,7 +51,7 @@
 
 		<div id="postid-<?php echo get_the_id(); ?>" class="entry-save-for-later">
 			<div class="rs-item-nav rs-item-save-for-later">
-				<?php echo do_shortcode( '[simplicity-save-for-later-loop]' ); ?>
+				<?php echo do_shortcode( '[simplicity-save-for-later-loop id="' . get_the_id() . '"]' ); ?>
 			</div>
 			<div class="rs-item-nav rs-item-nav-play-now">
 				<?php echo do_shortcode( '[add-play-now id="' . get_the_id() . '"]' ); ?>

@@ -43,6 +43,8 @@ Text Domain:	 chichi-child
   /*  box-shadow: -0.1px -0.1px 25px rgba(0,0,0,.25); */
     background-color: #fff;
     z-index: 9999;
+    display: grid;
+    height: auto;
 }
 
 #colophon.site-title.cloned {
@@ -129,6 +131,19 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 
 a:focus {
     outline: none;
+}
+
+@media only screen and (min-width: 765px) {
+    .cloned {
+        position: fixed;
+    }
+}
+
+@media only screen and (max-width: 764px) {
+    .cloned {
+        position: static;
+        padding: 1rem 0;
+    }
 }
 
 @media only screen and (min-width: 631px) and (max-width: 1654px) {

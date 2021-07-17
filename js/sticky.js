@@ -5,7 +5,7 @@ function stickIt_($) {
 	'use strict';
    
     // Create a clone of the site-header, right next to original.
-    jQuery('.site-header').addClass('original').clone().insertAfter('.site-header').addClass('cloned').css('position','fixed').css('margin-top','0').css('z-index','500').removeClass('original').hide();
+    jQuery('.site-header').addClass('original').clone().insertAfter('.site-header').addClass('cloned').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
     setInterval(stickIt, 1);
 
@@ -23,12 +23,10 @@ function stickIt_($) {
           if ($wpAdminBar.length) {
             jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
             jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-content').css('padding-top', '92px');
             jQuery('.original').hide();
           } else {
             jQuery('.cloned').css('top', 0).css('width', '100%').show();
             jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-content').css('padding-top', '92px');
             jQuery('.original').hide();
           }
           jQuery('.site-title').css('font-size','1.75rem');
@@ -70,12 +68,10 @@ function stickIt_($) {
         if ($wpAdminBar.length) {
           jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
           jQuery('.cloned').css('display', 'fixed');
-          jQuery('.site-content').css('padding-top', '92px');
           jQuery('.original').hide();
         } else {
           jQuery('.cloned').css('top', 0).css('width', '100%').show();
           jQuery('.cloned').css('display', 'fixed');
-          jQuery('.site-content').css('padding-top', '92px');
           jQuery('.original').hide();
         }
         jQuery('.site-title').css('font-size','1.75rem');

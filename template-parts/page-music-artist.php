@@ -45,7 +45,7 @@
 			<?php echo wp_get_attachment_image( get_post_meta( get_the_id(), "meta-box-media-cover_", true ), 'full', false, array('style' => 'max-width:98%;height:auto;') ); ?>
 		</div>
 		<?php
-			echo do_shortcode( '[simplicity-save-for-later-loop]' );
+			echo do_shortcode( '[simplicity-save-for-later-loop id="' . get_the_id() . '"]' );
 		endif; ?>
     </div><!-- .entry-header -->
     

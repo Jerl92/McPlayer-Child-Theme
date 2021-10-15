@@ -1,8 +1,5 @@
 
 function stickIt_($) {
-  
-  $.fn.ready();
-	'use strict';
    
     // Create a clone of the site-header, right next to original.
     jQuery('.site-header').addClass('original').clone().insertAfter('.site-header').addClass('cloned').css('margin-top','0').css('z-index','500').removeClass('original').hide();
@@ -16,7 +13,7 @@ function stickIt_($) {
       $wpAdminBarheight = jQuery("#wpadminbar").height();
 
       if ($windowwidth >= 765) {
-        if (jQuery(window).scrollTop() >= 1) {
+        if (jQuery(window).scrollTop() > 0) {
           // scrolled past the original position; now only show the cloned, sticky element.
 
           // Cloned element should always have same left position and width as original element.   
@@ -44,6 +41,7 @@ function stickIt_($) {
             jQuery('.original').css('top', 0).css('width', '100%').show();
           }
           jQuery('.site-title').css('font-size','2rem');
+          stickysidebar($);
         }
       }
     }
@@ -61,7 +59,7 @@ function stickIt_($) {
     $wpAdminBarheight = jQuery("#wpadminbar").height();
 
     if ($windowwidth >= 765) {
-      if (jQuery(window).scrollTop() >= 1) {
+      if (jQuery(window).scrollTop() > 0) {
         // scrolled past the original position; now only show the cloned, sticky element.
 
         // Cloned element should always have same left position and width as original element.   
@@ -89,6 +87,7 @@ function stickIt_($) {
           jQuery('.original').css('top', 0).css('width', '100%').show();
         }
         jQuery('.site-title').css('font-size','2rem');
+        stickysidebar($);
       }
     }
   }

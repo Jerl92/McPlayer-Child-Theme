@@ -13,36 +13,34 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php
-		if (  is_user_logged_in() ) {
-			if ( have_posts() ) : ?>
+		if ( have_posts() ) : ?>
 
-				<header class="page-header">
-					<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'chichi' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-				</header><!-- .page-header -->
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'chichi' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			</header><!-- .page-header -->
 
-				<?php
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-					/**
-					* Run the loop for the search to output the results.
-					* If you want to overload this in a child theme then include a file
-					* called content-search.php and that will be used instead.
-					*/
+
+				if(get_post_type() == 'attachment') {
+					get_template_part( 'template-parts/content', 'search' );
+				}
+
+				if(get_post_type() == 'music') {
 					get_template_part( 'template-parts/page-music-archive', 'search' );
+				}
 
-				endwhile;
+			endwhile;
 
-				the_posts_navigation();
+			the_posts_navigation();
 
-			else :
+		else :
 
-				get_template_part( 'template-parts/page-music-archive', 'none' );
+			get_template_part( 'template-parts/content', 'none' );
 
-			endif; 
-		} else { 
-			echo "You have nothing to see here !!";
-		} ?>
+		endif; ?>
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
@@ -50,4 +48,3 @@ get_header(); ?>
 <?php
 get_sidebar();
 get_footer();
-?>

@@ -81,7 +81,8 @@ get_header(); ?>
 						),
 					); 
 
-					$attachments = get_posts( $args );
+					$attachments = get_posts( $args );	
+					$count = 1;
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment ) {
 
@@ -121,6 +122,9 @@ get_header(); ?>
 								}
 							}
 
+							if ($count%4 == 1) {  
+								?><div style="display: inline-table; width: 100%;"><?php
+							}
 							?>
 							<ul id="album-class-artist" class="album-<?php echo $attachment->ID; ?>">
 								<li>
@@ -143,7 +147,10 @@ get_header(); ?>
 								</li>
 							</ul>
 							<?php
-
+							if ($count%4 == 0) {
+								?></div><?php
+							}
+							$count++;
 						}
 					}
 

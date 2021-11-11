@@ -18,23 +18,6 @@
 		add_theme_support( 'music' );
 	}
 
-	function mytheme_pre_get_posts( $query ) {
-		if ( !is_admin() && $query->is_search() && $query->is_main_query() ) {
-			$term = get_term_by('name', get_query_var('s'), 'artist');
-			if ($term) {
-				$query->set( 'tax_query', array(
-					 array(
-						'taxonomy' => 'artist',
-						'field'    => 'slug',
-						'terms'    =>  $term->slug,
-						'operator' => 'AND'
-					)
-				));
-			 }
-		}
-	}
-	add_action( 'pre_get_posts', 'mytheme_pre_get_posts', 1 );
-
 	function my_pre_get_posts($query) {
 		if( is_admin() ) 
 			return;

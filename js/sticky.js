@@ -20,11 +20,11 @@ function stickIt_($) {
           if ($wpAdminBar.length) {
             jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
             jQuery('.cloned').css('display', 'fixed');
-            jQuery('.original').hide();
+            jQuery('.site-header').css('box-shadow', 'none');
           } else {
             jQuery('.cloned').css('top', 0).css('width', '100%').show();
             jQuery('.cloned').css('display', 'fixed');
-            jQuery('.original').hide();
+            jQuery('.site-header').css('box-shadow', 'none');
           }
           jQuery('.site-title').css('font-size','1.75rem');
         } else {
@@ -34,14 +34,15 @@ function stickIt_($) {
             jQuery('.cloned').css('display', 'none');
             jQuery('.site-content').css('padding-top', 0);
             jQuery('.original').css('top', $wpAdminBarheight).css('width', '100%').show();
+            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
           } else {
             jQuery('.cloned').hide();
             jQuery('.cloned').css('display', 'none');
             jQuery('.site-content').css('padding-top', 0);
             jQuery('.original').css('top', 0).css('width', '100%').show();
+            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
           }
           jQuery('.site-title').css('font-size','2rem');
-          stickysidebar($);
         }
       }
     }
@@ -87,7 +88,6 @@ function stickIt_($) {
           jQuery('.original').css('top', 0).css('width', '100%').show();
         }
         jQuery('.site-title').css('font-size','2rem');
-        stickysidebar($);
       }
     }
   }

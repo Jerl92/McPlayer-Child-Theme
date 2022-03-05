@@ -71,7 +71,7 @@ get_header(); ?>
 						'post_mime_type' => 'image',
 						'meta_key' => 'meta-box-year',
 						'orderby' => 'meta_value_num',
-						'order' => 'DESC',
+						'order' => 'ASC',
 						'tax_query' => array(
 							array(
 								'taxonomy' => 'artist',
@@ -81,7 +81,8 @@ get_header(); ?>
 						),
 					); 
 
-					$attachments = get_posts( $args );	
+					$attachments_ = get_posts( $args );	
+					$attachments = array_reverse($attachments_);
 					$count = 1;
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment ) {

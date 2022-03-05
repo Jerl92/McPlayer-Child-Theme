@@ -11,6 +11,7 @@
 
 ?>
                 </div><!-- .wrap -->  
+            </div><!-- .wrap -->
                 <footer id="colophon" class="site-footer noselect" role="contentinfo">
                     <div class="wrap wrap-footer">  
                         <p class="made-with-love">
@@ -18,7 +19,6 @@
                         </p>
                     </div><!-- .wrap -->
                 </footer><!-- #colophon -->    
-            </div><!-- .wrap -->
         </div><!-- .wrap -->  
         <div id="wrap-player" class="wrap wrap-footer noselect"> 
             <?php if ( is_active_sidebar( 'left-menu-widget' ) ) : ?> 

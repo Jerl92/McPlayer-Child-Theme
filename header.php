@@ -19,11 +19,7 @@
 <?php wp_head(); ?>
 </head>
 
-<?php if ( is_user_logged_in() ) { ?>
 <body <?php body_class();  ?>>
-<?php } else { ?>
-<body <?php body_class();  ?> style="overflow: hidden;">
-<?php } ?>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'chichi' ); ?></a>
     <header id="masthead" class="site-header" role="banner">

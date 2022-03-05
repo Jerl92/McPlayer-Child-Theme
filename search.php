@@ -101,7 +101,12 @@ get_header(); ?>
 
 
 				if(get_post_type() == 'attachment') {
-					get_template_part( 'template-parts/content', 'search' );
+					$term_obj_list = get_the_terms( get_the_id(), 'artist' );
+					if ($term_obj_list) {
+						get_template_part( 'template-parts/page-album-archive', 'search' );
+					} else {
+						// get_template_part( 'template-parts/content', 'search' );
+					}
 				}
 
 				if(get_post_type() == 'music') {

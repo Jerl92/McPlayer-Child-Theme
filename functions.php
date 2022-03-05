@@ -18,20 +18,17 @@
 		add_theme_support( 'music' );
 	}
 
-	function my_pre_get_posts($query) {
-		if( is_admin() ) 
-			return;
-	
-		if( is_search() && $query->is_main_query() ) {
-			$query->set('post_type', 'music');
-			$query->set('post_status', 'any');
-		} 
+	function attachment_search( $query ) {
+		if ( $query->is_search ) {
+		   $query->set( 'post_type', array( 'post', 'attachment', 'music' ) );
+		   $query->set( 'post_status', 'any' );
+		   $query->set( 'posts_per_page', 50 );
+		}
+	 
+	   return $query;
 	}
-	add_action( 'pre_get_posts', 'my_pre_get_posts' );
 	
-	/* ========================================
-	 * SEARCH CUSTOM POST TYPES
-	 * ======================================== */
+	add_filter( 'pre_get_posts', 'attachment_search' );
 	
 	function cf_search_join( $join ) {
 		global $wpdb;

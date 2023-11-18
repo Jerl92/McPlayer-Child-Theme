@@ -28,9 +28,9 @@ get_header(); ?>
 
 			<div class="page-header" style="background: center no-repeat url(<?php echo z_taxonomy_image_url(); ?>); height: 225px; background-size: cover;">
 				<?php
-					single_term_title( '<h1 class="page-title" style="width: auto; display: inline; text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff; margin: 0;">', '</h1>' );
+					single_term_title( '<h1 class="page-title" style="width: auto;display: inline;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;margin: 10px;">', '</h1>' );
 					if ( $_GET['album']) {
-						echo '<h2 class="page-title" style="float: right; margin: 15px 15px 0 0; text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;">' . $image_title . '</h2>';
+						echo '<h2 class="page-title" style="float: right;margin: 10px;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;">' . $image_title . '</h2>';
 					}					
 					//  the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
@@ -59,120 +59,193 @@ get_header(); ?>
 			// The Query
 			$the_query = new WP_Query( $args );
 
-			if($the_query->have_posts()){
+			if ( $album_meta == null) {
 
-				while ( $the_query->have_posts() ) {
+				if($the_query->have_posts()){
 
-					$the_query->the_post();
+					while ( $the_query->have_posts() ) {
 
-					$args = array( 
-						'post_type' => 'attachment',
-						'posts_per_page' => -1,
-						'post_mime_type' => 'image',
-						'meta_key' => 'meta-box-year',
-						'orderby' => 'meta_value_num',
-						'order' => 'ASC',
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'artist',
-								'field'    => 'name',
-								'terms'    => $artist_slug_name,
+						$the_query->the_post();
+
+						$args = array( 
+							'post_type' => 'attachment',
+							'posts_per_page' => -1,
+							'post_mime_type' => 'image',
+							'meta_key' => 'meta-box-year',
+							'orderby' => 'meta_value_num',
+							'order' => 'ASC',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'artist',
+									'field'    => 'name',
+									'terms'    => $artist_slug_name,
+								),
 							),
-						),
-					); 
+						); 
 
-					$attachments_ = get_posts( $args );	
-					$attachments = array_reverse($attachments_);
-					$count = 1;
-					if ( $attachments ) {
-						foreach ( $attachments as $attachment ) {
+						$attachments_ = get_posts( $args );	
+						$attachments = array_reverse($attachments_);
+						$count = 1;
+						if ( $attachments ) {
+							foreach ( $attachments as $attachment ) {
 
-							$cover_loop = get_post_meta( $post->ID , 'meta-box-media-cover_' , true );
+								$cover_loop = get_post_meta( $post->ID , 'meta-box-media-cover_' , true );
 
-							$album_link = add_query_arg( 'album', esc_attr($attachment->ID ) , get_site_url() & '/mcplayer/artist/' & $cover_loop &  '/' );
-								
-							$parsed = parse_url( wp_get_attachment_url( $attachment->ID ) );
-							$url    = dirname( $parsed [ 'path' ] ) . '/' . rawurlencode( basename( $parsed[ 'path' ] ) );
+								$album_link = add_query_arg( 'album', esc_attr($attachment->ID ) , get_site_url() & '/mcplayer/artist/' & $cover_loop &  '/' );
+									
+								$parsed = parse_url( wp_get_attachment_url( $attachment->ID ) );
+								$url    = dirname( $parsed [ 'path' ] ) . '/' . rawurlencode( basename( $parsed[ 'path' ] ) );
 
-							$album_year = get_post_meta( $attachment->ID , 'meta-box-year' , true );
+								$album_year = get_post_meta( $attachment->ID , 'meta-box-year' , true );
 
-							$get_songs_args = array( 
-								'post_type' => 'music',
-								'posts_per_page' => -1,
-								'meta_key' => 'meta-box-media-cover_',
-								'meta_value' => $attachment->ID,
-								'order' => 'DESC',
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'artist',
-										'field'    => 'name',
-										'terms'    => $artist_slug_name
+								$get_songs_args = array( 
+									'post_type' => 'music',
+									'posts_per_page' => -1,
+									'meta_key' => 'meta-box-media-cover_',
+									'meta_value' => $attachment->ID,
+									'order' => 'DESC',
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'artist',
+											'field'    => 'name',
+											'terms'    => $artist_slug_name
+										)
 									)
-								)
-							); 
+								); 
 
-							$get_songs = get_posts( $get_songs_args );
+								$get_songs = get_posts( $get_songs_args );
 
-							if ( $get_songs ) {
-								
-								$i = 0; 
-								$get_songs_calc = [];
+								if ( $get_songs ) {
+									
+									$i = 0; 
+									$get_songs_calc = [];
 
-								foreach ( $get_songs as $get_songs_time ) {
-									$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
+									foreach ( $get_songs as $get_songs_time ) {
+										$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
+									}
 								}
-							}
 
-							if ($count%4 == 1) {  
-								?><div style="display: inline-table; width: 100%;"><?php
-							}
-							?>
-							<ul id="album-class-artist" class="album-<?php echo $attachment->ID; ?>">
-								<li>
-									<a href="<?php echo $album_link . '#idalbum'; ?>">
-										<img id="album-class-artist-img" src="<?php echo $url; ?>"></img>
-									</a>
-									<li style="float: left; max-width: calc(100% - 40px);">
-											<?php echo apply_filters( 'the_title' , $attachment->post_title ); ?>
-											</br>
-											<?php echo count( $get_songs ); ?>
-											<?php echo ' songs - '; ?>
-											<?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?>
-											</br>
-											<?php echo $album_year; ?>
-		
+								if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile')){
+									if ($count%2 == 1) {  
+										?><div class="album-row" style="display: inline-table; width: 100%;"><?php
+									}
+								} else {
+									if ($count%4 == 1) {  
+										?><div class="album-row" style="display: inline-table; width: 100%;"><?php
+									}
+								}
+								?>
+								<ul id="album-class-artist" class="album-<?php echo $attachment->ID; ?>">
+									<li>
+										<a href="<?php echo $album_link; ?>">
+											<img id="album-class-artist-img" src="<?php echo $url; ?>"></img>
+										</a>
+										<li style="float: left; max-width: calc(100% - 40px);">
+												<?php echo apply_filters( 'the_title' , $attachment->post_title ); ?>
+												</br>
+												<?php echo count( $get_songs ); ?>
+												<?php echo ' songs - '; ?>
+												<?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?>
+												</br>
+												<?php echo $album_year; ?>
+			
+												</li>
+											<li style="float: right; margin: 25px 15px 0 0;">
+												<?php echo do_shortcode( '[simplicity-save-for-later-loop-album album_id="' . $attachment->ID . '"]' ); ?>
 											</li>
-										<li style="float: right; margin: 25px 15px 0 0;">
-											<?php echo do_shortcode( '[simplicity-save-for-later-loop-album album_id="' . $attachment->ID . '"]' ); ?>
-										</li>
-								</li>
-							</ul>
-							<?php
-							if ($count%4 == 0) {
-								?></div><?php
+									</li>
+								</ul>
+								<?php
+								if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile')){
+									if ($count%2 == 0) {
+										?></div><?php
+									}
+								} else {
+									if ($count%4 == 0) {
+										?></div><?php
+									}
+								}
+								$count++;
 							}
-							$count++;
 						}
-					}
 
-				} wp_reset_postdata();
-				echo "</div>"; 
+					} wp_reset_postdata();
+					echo "</div>"; 
+				}
 			}
 					 
 			if ( have_posts() ) : 
-
-					echo "<div id='idalbum'>";
 
 					$album_meta = $_GET['album'];
 					$image = get_post($album_meta) ;
 					$image_title = $image->post_title;
 
-					if ( $album_meta != '') {
-						echo '</br>';
-						echo '<h3 style="text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff; margin: 0;">';
-						echo $image_title;   
-						echo '</h3>';
-					}  
+					$cover_loop = get_post_meta( $post->ID , 'meta-box-media-cover_' , true );
+
+					$album_link = add_query_arg( 'album', esc_attr($album_meta ) , get_site_url() & '/mcplayer/artist/' & $cover_loop &  '/' );
+						
+					$parsed = parse_url( wp_get_attachment_url( $album_meta ) );
+					$url    = dirname( $parsed [ 'path' ] ) . '/' . rawurlencode( basename( $parsed[ 'path' ] ) );
+
+					$album_year = get_post_meta( $album_meta , 'meta-box-year' , true );
+
+					$get_songs_args = array( 
+						'post_type' => 'music',
+						'posts_per_page' => -1,
+						'meta_key' => 'meta-box-media-cover_',
+						'meta_value' => $album_meta,
+						'order' => 'DESC',
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'artist',
+								'field'    => 'name',
+								'terms'    => $artist_slug_name
+							)
+						)
+					); 
+
+					$get_songs = get_posts( $get_songs_args );
+
+					if ( $get_songs ) {
+						
+						$i = 0; 
+						$get_songs_calc = [];
+
+						foreach ( $get_songs as $get_songs_time ) {
+							$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
+						}
+					}
+
+					$previous = "javascript:history.go(-1)";
+					if(isset($_SERVER['HTTP_REFERER'])) {
+						$previous = $_SERVER['HTTP_REFERER'];
+					}
+
+					if ($_GET['album'] != '') { 
+
+					?>
+							<div class="album-class-loop">
+							<span style="font-size: 25px; font-weight: 400;"><a href="<?= $previous ?>">< Back</a></span>
+							</br>
+								<div style="float: left; max-width: calc(100% - 40px);">
+									<span style="font-size: 30px; font-weight: 600;"><?php echo apply_filters( 'the_title' ,  get_the_title($album_meta) ); ?></span>
+									</br>
+									<span style="font-size: 25px; font-weight: 500;"><?php echo count( $get_songs ); ?>
+									<?php echo ' songs'; ?></span>
+									</br>
+									<span style="font-size: 20px; font-weight: 400;"><?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?></span>
+									</br>
+									<span style="font-size: 20px; font-weight: 300;"><?php echo $album_year; ?></span>
+								</div>
+								<div>
+									<img class="album-class-artist-img" src="<?php echo wp_get_attachment_url($album_meta); ?>"></img>
+								</div>
+							</div>
+					<?php
+
+					}
+
+					echo "<div id='idalbum'>";
 
 					$wp_query = new WP_Query();
 					$wp_query->query('post_type=music&order=ASC&meta_value=' . $album_meta . '&orderby=meta_value_num&showposts=-1');

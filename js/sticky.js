@@ -1,97 +1,54 @@
 
-function stickIt_($) {
-   
-    // Create a clone of the site-header, right next to original.
-    jQuery('.site-header').addClass('original').clone().insertAfter('.site-header').addClass('cloned').css('margin-top','0').css('z-index','500').removeClass('original').hide();
-
-    setInterval(stickIt, 1);
-
-    function stickIt($) {
-
-      $wpAdminBar = jQuery("#wpadminbar");
-      $windowwidth = jQuery(window).width();
-      $wpAdminBarheight = jQuery("#wpadminbar").height();
-
-      if ($windowwidth >= 765) {
-        if (jQuery(window).scrollTop() > 0) {
-          // scrolled past the original position; now only show the cloned, sticky element.
-
-          // Cloned element should always have same left position and width as original element.   
-          if ($wpAdminBar.length) {
-            jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
-            jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-header').css('box-shadow', 'none');
-          } else {
-            jQuery('.cloned').css('top', 0).css('width', '100%').show();
-            jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-header').css('box-shadow', 'none');
-          }
-          jQuery('.site-title').css('font-size','1.75rem');
-        } else {
-          if ($wpAdminBar.length) {
-            // not scrolled past the site-header; only show the original site-header.
-            jQuery('.cloned').hide();
-            jQuery('.cloned').css('display', 'none');
-            jQuery('.site-content').css('padding-top', 0);
-            jQuery('.original').css('top', $wpAdminBarheight).css('width', '100%').show();
-            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
-          } else {
-            jQuery('.cloned').hide();
-            jQuery('.cloned').css('display', 'none');
-            jQuery('.site-content').css('padding-top', 0);
-            jQuery('.original').css('top', 0).css('width', '100%').show();
-            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
-          }
-          jQuery('.site-title').css('font-size','2rem');
-        }
-      }
-    }
-  }
-
-  jQuery(document).ready(function($) {
-    stickIt_($);
-  });
-
-  
-  function stickIt_resize($) {
-
-    $wpAdminBar = jQuery("#wpadminbar");
+  jQuery(window).scroll(function(){
     $windowwidth = jQuery(window).width();
-    $wpAdminBarheight = jQuery("#wpadminbar").height();
 
     if ($windowwidth >= 765) {
       if (jQuery(window).scrollTop() > 0) {
-        // scrolled past the original position; now only show the cloned, sticky element.
-
-        // Cloned element should always have same left position and width as original element.   
-        if ($wpAdminBar.length) {
-          jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
-          jQuery('.cloned').css('display', 'fixed');
-          jQuery('.original').hide();
-        } else {
-          jQuery('.cloned').css('top', 0).css('width', '100%').show();
-          jQuery('.cloned').css('display', 'fixed');
-          jQuery('.original').hide();
-        }
+        jQuery('#masthead').addClass('fixed-header-nav');
+        jQuery('#content').addClass('fixed-content-nav');
         jQuery('.site-title').css('font-size','1.75rem');
-      } else {
-        if ($wpAdminBar.length) {
-          // not scrolled past the site-header; only show the original site-header.
-          jQuery('.cloned').hide();
-          jQuery('.cloned').css('display', 'none');
-          jQuery('.site-content').css('padding-top', 0);
-          jQuery('.original').css('top', $wpAdminBarheight).css('width', '100%').show();
-        } else {
-          jQuery('.cloned').hide();
-          jQuery('.cloned').css('display', 'none');
-          jQuery('.site-content').css('padding-top', 0);
-          jQuery('.original').css('top', 0).css('width', '100%').show();
-        }
+        jQuery('#masthead').css('padding','0');
+      }
+      else {
+        jQuery('#masthead').removeClass('fixed-header-nav');
+        jQuery('#content').removeClass('fixed-content-nav');
         jQuery('.site-title').css('font-size','2rem');
+        jQuery('#masthead').css('padding','16px 0 16px 0');
       }
     }
-  }
+  });
 
-  jQuery(window).resize(function($) {
-    stickIt_resize($);
+
+  jQuery(document).ready(function() {
+    var windowHeight = jQuery(window).height();
+    var documentHeight = jQuery(document).height();
+    var windowwidth = jQuery(document).width();
+    var sidebar = jQuery('#secondary').height();
+    var primary = jQuery('#primary').height();
+
+    if (windowwidth > 720) {
+      jQuery('#secondary').css('overflow', 'scroll');
+      if (primary < sidebar) {
+        jQuery(document).height(primary);
+      } else {
+        jQuery(document).height(sidebar);
+      }
+    }
+  });
+
+  jQuery(window).resize(function() {
+    var windowHeight = jQuery(window).height();
+    var documentHeight = jQuery(document).height();
+    var windowwidth = jQuery(document).width();
+    var sidebar = jQuery('#secondary').height();
+    var primary = jQuery('#primary').height();
+
+    if (windowwidth > 720) {
+      if (primary < sidebar) {
+        jQuery('#secondary').css('overflow', 'scroll');
+        jQuery(document).height(primary);
+      } else {
+        jQuery(document).height(sidebar);
+      }
+    }
   });

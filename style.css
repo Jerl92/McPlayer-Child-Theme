@@ -15,6 +15,18 @@ Text Domain:	 chichi-child
     border-right: .5px solid rgba(0,0,0,.25);
 }
 
+.fixed-header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 999;
+}
+
+.fixed-content-nav {
+    margin-top: 100px;
+}
+
 .wrap {
     max-width: 100%;
     width: 99%;
@@ -95,6 +107,16 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
     border: 1px solid rgba(0,0,0,.25);
 }
 
+.album-class-artist-img {
+    width: 300px;
+    float: right;
+    box-shadow: -10px 5px 25px rgba(0,0,0,.4);
+}
+
+.album-class-loop {
+    margin: 25px;
+}
+
 #album-class-artist-img:hover {
     border: .5px solid rgba(0,0,0,.5);
     opacity: 0.75;
@@ -154,7 +176,7 @@ a:focus {
 
 @media only screen and (min-width: 631px) and (max-width: 1654px) {
     .page-music {
-        width: 19.75%;
+        width: 24.5%;
         padding: 0 0 0 0.05%;
         display: inline-block;
     }

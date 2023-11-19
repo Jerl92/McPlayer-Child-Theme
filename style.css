@@ -24,7 +24,7 @@ Text Domain:	 chichi-child
 }
 
 .fixed-content-nav {
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 .wrap {
@@ -227,6 +227,22 @@ a:focus {
         float: none;
         padding-bottom: 25px;
         padding-right: 0px;
+    }
+    .artist-banner-info {
+        text-align: center !important;
+        width: 100%;
+        display: block !important;
+    }
+    .album-class-loop-info {
+        text-align: center !important;
+        width: 100%;
+        display: block !important;        
+        max-width: 100% !important;
+    }
+    .album-class-artist-img {
+        float: none !important;
+        margin: auto !important;
+        display: table !important;
     }
 }
 

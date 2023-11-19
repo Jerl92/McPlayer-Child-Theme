@@ -3,7 +3,7 @@
     $windowwidth = jQuery(window).width();
 
     if ($windowwidth >= 765) {
-      if (jQuery(window).scrollTop() > 0) {
+      if (jQuery(window).scrollTop() > 125) {
         jQuery('#masthead').addClass('fixed-header-nav');
         jQuery('#content').addClass('fixed-content-nav');
         jQuery('.site-title').css('font-size','1.75rem');

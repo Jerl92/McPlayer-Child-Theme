@@ -23,15 +23,74 @@ get_header(); ?>
 						
 			$image_title = $image->post_title;
 			
+			$getslugid = wp_get_post_terms( $post->ID, 'artist' );
+			foreach( $getslugid as $thisslug ) {
+				$artist_slug_name = $thisslug->name; // Added a space between the slugs with . ' '
+			}
+
+			$get_albums_args = array(
+				'post_type' => 'attachment',
+				'posts_per_page' => -1,
+				'post_mime_type' => 'image',
+				'meta_key' => 'meta-box-year',
+				'orderby' => 'meta_value_num',
+				'order' => 'ASC',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'artist',
+						'field'    => 'name',
+						'terms'    => $artist_slug_name
+					)
+				)
+			);
+
+			$get_albums = get_posts($get_albums_args);
+
+			$get_songs_args = array(
+				'post_type' => 'music',
+				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'artist',
+						'field'    => 'name',
+						'terms'    => $artist_slug_name
+					)
+				)
+			);
+
+			$get_songs = get_posts($get_songs_args);
+
+
+			if ($get_songs) {
+
+				$i = 0;
+				$get_songs_calc = [];
+
+				foreach ($get_songs as $get_songs_time) {
+					$get_songs_calc[$i++] =  seconds_from_time(get_post_meta($get_songs_time->ID, 'meta-box-track-length', true));
+				}
+			}
 			
 			?>
 
 			<div class="page-header" style="background: center no-repeat url(<?php echo z_taxonomy_image_url(); ?>); height: 225px; background-size: cover;">
 				<?php
-					single_term_title( '<h1 class="page-title" style="width: auto;display: inline;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;margin: 10px;">', '</h1>' );
-					if ( $_GET['album']) {
-						echo '<h2 class="page-title" style="float: right;margin: 10px;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;">' . $image_title . '</h2>';
-					}					
+					single_term_title( '<h1 class="page-title artist-banner-info" style="width: auto;display: inline;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;margin: 10px;">', '</h1>' );
+					echo '<h2 class="page-title artist-banner-info" style="text-align: right; float: right;margin: 10px;text-shadow: -2px 0 #fff, 0 2px #fff, 2px 0 #fff, 0 -2px #fff;">';
+
+						echo count($get_albums);
+						echo ' albums - ';
+						echo count($get_songs);
+						echo ' songs';
+						echo '</br>';
+						echo time_from_seconds(array_sum($get_songs_calc));
+						echo '</br>';		
+						echo get_post_meta($get_albums[0]->ID,  "meta-box-year", true);
+						echo ' - ';
+						echo get_post_meta($get_albums[count($get_albums) - 1]->ID,  "meta-box-year", true);
+
+					echo '</h2>';			
 					//  the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</div><!-- .page-header -->
@@ -227,7 +286,7 @@ get_header(); ?>
 							<div class="album-class-loop">
 							<span style="font-size: 25px; font-weight: 400;"><a href="<?= $previous ?>">< Back</a></span>
 							</br>
-								<div style="float: left; max-width: calc(100% - 40px);">
+								<div class="album-class-loop-info" style="float: left; max-width: calc(100% - 40px);">
 									<span style="font-size: 30px; font-weight: 600;"><?php echo apply_filters( 'the_title' ,  get_the_title($album_meta) ); ?></span>
 									</br>
 									<span style="font-size: 25px; font-weight: 500;"><?php echo count( $get_songs ); ?>
@@ -237,7 +296,7 @@ get_header(); ?>
 									</br>
 									<span style="font-size: 20px; font-weight: 300;"><?php echo $album_year; ?></span>
 								</div>
-								<div>
+								<div class="album-class-img">
 									<img class="album-class-artist-img" src="<?php echo wp_get_attachment_url($album_meta); ?>"></img>
 								</div>
 							</div>
@@ -285,6 +344,9 @@ get_header(); ?>
 										<?php echo $if_feat; ?>
 									<br />
 									<?php } ?>
+							</td>
+							<td style="padding: 0 25px;">
+								<?php echo get_post_meta( $post[1], "count_play_loop", true); ?>
 							</td>
 							<td style="">
 								<?php echo get_post_meta( $post[1], "meta-box-track-length", true ); ?>

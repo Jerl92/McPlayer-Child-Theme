@@ -46,6 +46,7 @@ Text Domain:	 chichi-child
 
 #secondary {
     display: table;
+    overflow-y: scroll !important;
 }
 
 #remove-all-btn a:visited, #remove-all-btn a:active, #remove-all-btn a:focus {
@@ -159,6 +160,10 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 
 a:focus {
     outline: none;
+}
+
+#lnamesave {
+    width: 72.5%;
 }
 
 @media only screen and (min-width: 765px) {

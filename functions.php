@@ -112,4 +112,9 @@
 			return $http;
 		}
 	}
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'top-menu' => esc_html__( 'Top menu', 'chichi' ),
+	) );
 ?>

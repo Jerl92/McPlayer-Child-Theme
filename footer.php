@@ -20,6 +20,7 @@
                     </div><!-- .wrap -->
                 </footer><!-- #colophon -->    
         </div><!-- .wrap -->  
+        <?php wp_footer(); ?>
         <div id="wrap-player" class="wrap wrap-footer noselect"> 
             <?php if ( is_active_sidebar( 'left-menu-widget' ) ) : ?> 
                 <div id="left-menu-widget" class="sidebar-container menu-off" role="complementary">
@@ -29,8 +30,6 @@
                 </div><!-- #sidr-left -->
             <?php endif; ?>
         </div>   
-
-        <?php wp_footer(); ?>
 
     </body>
 

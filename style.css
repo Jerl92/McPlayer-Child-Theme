@@ -15,6 +15,42 @@ Text Domain:	 chichi-child
     border-right: .5px solid rgba(0,0,0,.25);
 }
 
+.is-onstart{
+    -webkit-animation: 1s ease 0s normal forwards 1 fadein;
+    animation: 1s ease 0s normal forwards 1 fadein;
+    z-index: -999 !important;
+}
+
+@keyframes fadein{
+    100% { opacity:0; }
+    75% { opacity:0.5; }
+    0% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    100% { opacity:0; }
+    75% { opacity:0.5; }
+    0% { opacity:1; }
+}
+
+.is-onready{
+    -webkit-animation: 1s ease 0s normal forwards 1 fadeout;
+    animation: 1s ease 0s normal forwards 1 fadeout;
+    z-index: 999 !important;
+}
+
+@keyframes fadeout{
+    0% { opacity:0; }
+    50% { opacity:0.5; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadeout{
+    0% { opacity:0; }
+    50% { opacity:0.5; }
+    100% { opacity:1; }
+}
+
 .fixed-header-nav {
     position: fixed;
     top: 0;
@@ -80,6 +116,7 @@ Text Domain:	 chichi-child
     background-color: #fff;
     box-shadow: 0.05px 0.05px 15px rgba(0,0,0,.15);
     margin-bottom: 5px;
+    padding: 0 !important;
 }
 
 .hide-player {
@@ -164,6 +201,36 @@ a:focus {
 
 #lnamesave {
     width: 72.5%;
+}
+
+#mastheadtop {
+    display: list-item;
+    background-color: #000;
+}
+
+.top-navigation {
+    float: right;
+}
+
+.top-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 5px;
+	text-align: left;
+}
+
+.top-navigation ul a {
+    color: #fff;
+}
+
+#top-menu {
+    border: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#top-menu li {
+    display: inline-block;
 }
 
 @media only screen and (min-width: 765px) {

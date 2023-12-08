@@ -19,38 +19,3 @@
         }
       }
     });
-
-
-    jQuery(document).ready(function() {
-      var windowHeight = jQuery(window).height();
-      var documentHeight = jQuery(document).height();
-      var windowwidth = jQuery(document).width();
-      var sidebar = jQuery('#secondary').height();
-      var primary = jQuery('#primary').height();
-
-      if (windowwidth > 720) {
-        jQuery('#secondary').css('overflow', 'scroll');
-        if (primary < sidebar) {
-          jQuery(document).height(primary);
-        } else {
-          jQuery(document).height(sidebar);
-        }
-      }
-    });
-
-    jQuery(window).resize(function() {
-      var windowHeight = jQuery(window).height();
-      var documentHeight = jQuery(document).height();
-      var windowwidth = jQuery(document).width();
-      var sidebar = jQuery('#secondary').height();
-      var primary = jQuery('#primary').height();
-
-      if (windowwidth > 720) {
-        if (primary < sidebar) {
-          jQuery('#secondary').css('overflow', 'scroll');
-          jQuery(document).height(primary);
-        } else {
-          jQuery(document).height(sidebar);
-        }
-      }
-    });

@@ -24,6 +24,9 @@
 <div id="page" class="site">
     <header id="masthead" class="site-header" role="banner">
         <div id="mastheadtop" class="header-menu-top">
+                <div class="memory-usage">
+                    <?php echo memory_usage(); ?>
+                </div>
                 <nav id="site-navigation" class="top-navigation" role="navigation">
                     <?php wp_nav_menu( array( 'theme_location' => 'top-menu', 'menu_id' => 'top-menu' ) ); ?>
                 </nav><!-- #site-navigation -->

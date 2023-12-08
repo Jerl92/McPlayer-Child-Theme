@@ -41,13 +41,13 @@ Text Domain:	 chichi-child
 
 @keyframes fadeout{
     0% { opacity:0; }
-    50% { opacity:0.5; }
+    90% { opacity:1; }
     100% { opacity:1; }
 }
 
 @-webkit-keyframes fadeout{
     0% { opacity:0; }
-    50% { opacity:0.5; }
+    90% { opacity:1; }
     100% { opacity:1; }
 }
 
@@ -81,7 +81,6 @@ Text Domain:	 chichi-child
 }
 
 #secondary {
-    display: table;
     overflow-y: scroll !important;
 }
 
@@ -231,6 +230,29 @@ a:focus {
 
 #top-menu li {
     display: inline-block;
+    margin: 0 5px;
+}
+
+.memory-usage {
+    width: auto;
+    color: #fff;
+    float: left;
+    margin: 0 5px;
+}
+
+.pmpro_checkout-field {
+    width: 30%;
+    float: left;
+}
+
+.pmpro_checkout-field-bemail {
+    float: right;
+    margin-right: 10% !important;
+}
+
+#pmpro_message_bottom {
+    display: inline-table;
+    width: 100%;
 }
 
 @media only screen and (min-width: 765px) {

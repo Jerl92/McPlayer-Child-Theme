@@ -53,10 +53,12 @@ Text Domain:	 chichi-child
 
 .fixed-header-nav {
     position: fixed;
-    top: 0;
+    top: -167.5px;
     left: 0;
-    width: 100%; 
+    width: 100%;
     z-index: 999;
+    transition: .4s linear;
+    transform: translateY(200%);
 }
 
 .fixed-content-nav {

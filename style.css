@@ -187,6 +187,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
     background-color: #fff;
     z-index: 9999;
     width: 100% !important;
+    border-radius: 25px 25px 0 0;
 }
 
 .entry-meta-data-lyric {
@@ -199,7 +200,11 @@ a:focus {
 }
 
 #lnamesave {
-    width: 72.5%;
+    width: 75%;
+}
+
+.save-playlist {
+    width: 25%;
 }
 
 #mastheadtop {

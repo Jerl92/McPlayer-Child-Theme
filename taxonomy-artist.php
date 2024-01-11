@@ -69,6 +69,7 @@ get_header(); ?>
 
 				foreach ($get_songs as $get_songs_time) {
 					$get_songs_calc[$i++] =  seconds_from_time(get_post_meta($get_songs_time->ID, 'meta-box-track-length', true));
+					$get_count_played[$i++] = get_post_meta($get_songs_time->ID, 'count_play_loop', true);
 				}
 			}
 			
@@ -84,6 +85,8 @@ get_header(); ?>
 						echo count($get_songs);
 						echo ' songs';
 						echo '</br>';
+						echo array_sum($get_count_played);
+						echo ' - ';
 						echo time_from_seconds(array_sum($get_songs_calc));
 						echo '</br>';		
 						echo get_post_meta($get_albums[0]->ID,  "meta-box-year", true);

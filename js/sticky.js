@@ -3,15 +3,24 @@
  
    jQuery(window).scroll(function(){
       $windowwidth = jQuery(window).width();
+      var header = $("#wpadminbar").height();
 
+      if(header){
+        if ($windowwidth >= 765) {
+          if (jQuery(window).scrollTop() > 0) {
+            jQuery('#masthead').css('top', '-135px');
+          } else {
+            jQuery('#masthead').css('top', '0px');
+          }
+        }
+      }
       if ($windowwidth >= 765) {
-        if (jQuery(window).scrollTop() > 0) {
+        if (jQuery(window).scrollTop() > 0  ) {
           jQuery('#masthead').addClass('fixed-header-nav');
           jQuery('#content').addClass('fixed-content-nav');
           jQuery('.site-title').css('font-size','1.75rem');
           jQuery('#masthead').css('padding','0');
-        }
-        else {
+        } else {
           jQuery('#masthead').removeClass('fixed-header-nav');
           jQuery('#content').removeClass('fixed-content-nav');
           jQuery('.site-title').css('font-size','2rem');

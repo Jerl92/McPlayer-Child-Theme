@@ -117,4 +117,9 @@
 	register_nav_menus( array(
 		'top-menu' => esc_html__( 'Top menu', 'chichi' ),
 	) );
+
+	function custom_login_redirect() {
+		return home_url();
+	}
+	add_filter('login_redirect', 'custom_login_redirect');
 ?>

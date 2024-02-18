@@ -86,6 +86,7 @@ get_header(); ?>
 						echo ' songs';
 						echo '</br>';
 						echo array_sum($get_count_played);
+						echo ' Plays';
 						echo ' - ';
 						echo time_from_seconds(array_sum($get_songs_calc));
 						echo '</br>';		

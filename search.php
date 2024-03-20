@@ -21,6 +21,9 @@ get_header(); ?>
 
 			<?php
 
+			$search_ = $_GET['s'];
+
+			if($search_ != ''){
 			$paged = $wp_query->get( 'paged' );
 			
 			if ( ! $paged || $paged < 2 ) {
@@ -166,6 +169,8 @@ get_header(); ?>
 				}
 
 			}
+
+		}
 
 			echo '<div class="searchartist">';
 				/* Start the Loop */

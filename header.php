@@ -29,8 +29,8 @@
                         <?php echo memory_usage(); ?>
                     </div>
                 </a>
-                <nav id="site-navigation" class="top-navigation" role="navigation">
-                    <?php wp_nav_menu( array( 'theme_location' => 'top-menu', 'menu_id' => 'top-menu' ) ); ?>
+                <nav id="site-navigation" class="top-navigation" role="navigation" style="width: 75%;overflow-x: scroll;scrollbar-width: none;">
+                    <?php wp_nav_menu( array( 'theme_location' => 'top-menu', 'menu_id' => 'top-menu', 'container_id' => 'top-menu-container' ) ); ?>
                 </nav><!-- #site-navigation -->
         </div>
         <div class="wrap">

@@ -28,3 +28,36 @@
         }
       }
     });
+  
+function topmenucontainer($){
+  $windowwidth = jQuery(window).width();
+  if ($windowwidth >= 765) {
+    jQuery('.top-navigation').css('width', 'auto');
+    jQuery('#top-menu-container').css('width', 'auto');
+    jQuery('#top-menu-container').css('float', 'right');
+  } else {
+    jQuery('.top-navigation').css('width', '75%');
+    $topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', $topmenuwidth);
+    jQuery('#top-menu-container').css('float', 'right');
+  }
+}
+
+jQuery(document).ready(function($) {
+  topmenucontainer($);
+});
+
+
+$( window ).on( "resize", function() {
+  $windowwidth = jQuery(window).width();
+  if ($windowwidth >= 765) {
+    jQuery('.top-navigation').css('width', 'auto');
+    jQuery('#top-menu-container').css('width', 'auto');
+    jQuery('#top-menu-container').css('float', 'right');
+  } else {
+    jQuery('.top-navigation').css('width', '75%');
+    $topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', $topmenuwidth);
+    jQuery('#top-menu-container').css('float', 'right');
+  }
+} );

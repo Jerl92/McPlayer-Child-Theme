@@ -238,6 +238,7 @@ a:focus {
     border: 0;
     margin-bottom: 0;
     padding: 0;
+    float: right;
 }
 
 #top-menu li {
@@ -285,6 +286,15 @@ form.pmpro_form input[type=text] {
     background-color: #86b854;
 }
 
+#top-menu-container {
+    width: auto;
+}
+
+@media only screen and (max-width: 765px) {
+    #top-menu-container {
+        width: 125%;
+    }
+}
 
 @media only screen and (min-width: 765px) {
     .cloned {

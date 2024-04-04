@@ -6,7 +6,7 @@
       var header = $("#wpadminbar").height();
 
       if(header){
-        if ($windowwidth >= 765) {
+        if ($windowwidth >= 720) {
           if (jQuery(window).scrollTop() > 0) {
             jQuery('#masthead').css('top', '-135px');
           } else {
@@ -14,7 +14,7 @@
           }
         }
       }
-      if ($windowwidth >= 765) {
+      if ($windowwidth >= 720) {
         if (jQuery(window).scrollTop() > 0  ) {
           jQuery('#masthead').addClass('fixed-header-nav');
           jQuery('#content').addClass('fixed-content-nav');
@@ -28,17 +28,23 @@
         }
       }
     });
+
+    jQuery(window).on('orientationchange resize', function (event) {
+      jQuery('#masthead').removeClass('fixed-header-nav');
+      jQuery('#content').removeClass('fixed-content-nav');
+      jQuery('.site-title').css('font-size','2rem');
+      jQuery('#masthead').css('padding','15px 0 15px 0');
+    });
   
 function topmenucontainer($){
   $windowwidth = jQuery(window).width();
-  if ($windowwidth >= 765) {
+  if ($windowwidth >= 720) {
     jQuery('.top-navigation').css('width', 'auto');
     jQuery('#top-menu-container').css('width', 'auto');
     jQuery('#top-menu-container').css('float', 'right');
   } else {
-    jQuery('.top-navigation').css('width', '75%');
     $topmenuwidth = jQuery('#top-menu').width();
-    jQuery('#top-menu-container').css('width', $topmenuwidth);
+    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
     jQuery('#top-menu-container').css('float', 'right');
   }
 }
@@ -50,14 +56,14 @@ jQuery(document).ready(function($) {
 
 $( window ).on( "resize", function() {
   $windowwidth = jQuery(window).width();
-  if ($windowwidth >= 765) {
+  if ($windowwidth >= 720) {
     jQuery('.top-navigation').css('width', 'auto');
     jQuery('#top-menu-container').css('width', 'auto');
     jQuery('#top-menu-container').css('float', 'right');
+    
   } else {
-    jQuery('.top-navigation').css('width', '75%');
     $topmenuwidth = jQuery('#top-menu').width();
-    jQuery('#top-menu-container').css('width', $topmenuwidth);
+    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
     jQuery('#top-menu-container').css('float', 'right');
   }
 } );

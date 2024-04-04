@@ -292,7 +292,7 @@ form.pmpro_form input[type=text] {
 
 @media only screen and (max-width: 765px) {
     #top-menu-container {
-        width: 125%;
+        width: 100%;
     }
 }
 

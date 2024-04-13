@@ -12,7 +12,7 @@ global $post;
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		
+		<div class="loader"></div>
 		<main id="main" class="site-main" role="main">
 			
 			<?php 

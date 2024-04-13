@@ -18,6 +18,13 @@
 		add_theme_support( 'music' );
 	}
 
+	add_action('after_setup_theme', 'remove_admin_bar');
+	function remove_admin_bar() {
+		if (!current_user_can('administrator') && !is_admin()) {
+			show_admin_bar(false);
+		}
+	}
+
 	function attachment_search( $query ) {
 		if ( $query->is_search ) {
 		   $query->set( 'post_type', array( 'post', 'attachment', 'music' ) );

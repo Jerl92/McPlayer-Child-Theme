@@ -10,7 +10,6 @@
  */
 
 ?>
-                </div><!-- .wrap -->  
             </div><!-- .wrap -->
                 <footer id="colophon" class="site-footer noselect" role="contentinfo">
                     <div class="wrap wrap-footer">  

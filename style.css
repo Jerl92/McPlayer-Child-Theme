@@ -23,38 +23,53 @@ body {
 .is-onstart{
     -webkit-animation: 1s ease 0s normal forwards 1 fadein;
     animation: 1s ease 0s normal forwards 1 fadein;
-    z-index: -999 !important;
 }
 
 @keyframes fadein{
-    100% { opacity:0; }
-    75% { opacity:0.5; }
     0% { opacity:1; }
+    50% { opacity:0.5; }
+    100% { opacity:0; }
 }
 
 @-webkit-keyframes fadein{
-    100% { opacity:0; }
-    75% { opacity:0.5; }
     0% { opacity:1; }
+    50% { opacity:0.5; }
+    100% { opacity:0; }
 }
 
 .is-onready{
     -webkit-animation: 1s ease 0s normal forwards 1 fadeout;
     animation: 1s ease 0s normal forwards 1 fadeout;
-    z-index: 999 !important;
 }
 
 @keyframes fadeout{
     0% { opacity:0; }
-    90% { opacity:1; }
+    50% { opacity:0.5; }
     100% { opacity:1; }
 }
 
 @-webkit-keyframes fadeout{
     0% { opacity:0; }
-    90% { opacity:1; }
+    50% { opacity:0.5; }
     100% { opacity:1; }
 }
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 120px;
+    height: 20px;
+    -webkit-mask:linear-gradient(90deg,#000 70%,#0000 0) 0/20%;
+    background:
+     linear-gradient(#000 0 0) 0/0% no-repeat
+     #ddd;
+    animation: l4 2s infinite steps(6);
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+  @keyframes l4 {
+      100% {background-size:120%}
+  }
 
 .fixed-header-nav {
     position: fixed;
@@ -152,7 +167,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 }
 
 .album-class-artist-img {
-    width: 300px;
+    width: 350px;
     float: right;
     box-shadow: -10px 5px 25px rgba(0,0,0,.4);
 }

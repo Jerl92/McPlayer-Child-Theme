@@ -276,7 +276,6 @@ get_header(); ?>
 
 						foreach ( $get_songs as $get_songs_time ) {
 							$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
-							$get_songs_count[$i++] = get_post_meta(  $get_songs_time->ID , 'count_play_loop' , true );
 						}
 					}
 
@@ -287,8 +286,6 @@ get_header(); ?>
 
 					if ($_GET['album'] != '') { 
 
-
-
 					?>
 							<div class="album-class-loop">
 							<span style="font-size: 25px; font-weight: 400;"><a href="<?= $previous ?>">< Back</a></span>
@@ -298,10 +295,6 @@ get_header(); ?>
 									</br>
 									<span style="font-size: 25px; font-weight: 500;"><?php echo count( $get_songs ); ?>
 									<?php echo ' songs'; ?></span>
-									</br>
-									<span style="font-size: 22.5px; font-weight: 400;">
-									<?php echo array_sum($get_songs_count); ?>
-									<?php echo ' Plays'; ?></span>
 									</br>
 									<span style="font-size: 20px; font-weight: 400;"><?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?></span>
 									</br>

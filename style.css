@@ -167,7 +167,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 }
 
 .album-class-artist-img {
-    width: 375px;
+    width: 350px;
     float: right;
     box-shadow: -10px 5px 25px rgba(0,0,0,.4);
 }

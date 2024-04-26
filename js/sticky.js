@@ -3,7 +3,7 @@
  
    jQuery(window).scroll(function(){
       $windowwidth = jQuery(window).width();
-      var header = $("#wpadminbar").height();
+      var header = jQuery("#wpadminbar").height();
 
       if(header){
         if ($windowwidth >= 720) {
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
 });
 
 
-$( window ).on( "resize", function() {
+jQuery( window ).on( "resize", function() {
   $windowwidth = jQuery(window).width();
   if ($windowwidth >= 720) {
     jQuery('.top-navigation').css('width', 'auto');

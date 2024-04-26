@@ -17,7 +17,7 @@
 	$getslugid = wp_get_post_terms( get_the_id(), 'artist' );	
 ?>
 
-<li class="rs-item-saved-for-later" id="rs-item-<?php echo get_the_id();?>">
+<li class="rs-item-saved-for-later" id="rs-item-<?php echo esc_attr(get_the_id());?>" data-object-id="<?php echo esc_attr(get_the_id());?>">
 	<div class="rs-item-content">
 		<div class="rs-item-cover">
 			<?php echo wp_get_attachment_image( get_post_meta( get_the_id(), "meta-box-media-cover_", true ), array('62.5', '62.5'), false, array('style' => 'max-width:100%;height:auto;') ); ?>

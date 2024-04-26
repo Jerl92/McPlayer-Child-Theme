@@ -330,7 +330,7 @@ get_header(); ?>
 
 						foreach($posts as $post) { ?>
 							<tr style='width: 100%; height: 60px;'>
-							<td id="album-class-artist-list-id-<?php echo $post[1]; ?>" style='text-align: center; width: 30px; padding: 0 10px;'>
+							<td id="album-class-artist-list-id-<?php echo $post[1]; ?>" style='text-align: center; width: 30px; padding: 0 15px;'>
 								<?php echo do_shortcode( '[simplicity-save-for-later-loop id="' . $post[1] . '"]' ); ?>
 							</td>
 							<td style='width: 30px; display: inline-flex; text-align: center; margin auto 0; padding: 0 5px;'>

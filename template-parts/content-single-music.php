@@ -60,19 +60,17 @@
 			<div class="entry-meta-cover">
 				<?php echo wp_get_attachment_image( get_post_meta( get_the_id(), "meta-box-media-cover_", true ), 'full', false, array('style' => 'max-width:450px;height:auto;') ); ?>
 			</div>
-
-			<?php if ( is_user_logged_in() ) { ?>			
-				<div class="entry-meta-data-lyric">
-					<?php $if_lyric = nl2br( esc_html( get_post_meta( get_the_id(), "meta-box-music-lyric", true) ) );
-					if ($if_lyric != '') {
-					?>
-						<br />
-						<hr>
-						<h3>Lyrics</h3>
-						<?php echo $if_lyric; ?>
-					<?php } ?>
-				</div>
-			<?php } ?>
+		
+			<div class="entry-meta-data-lyric">
+				<?php $if_lyric = nl2br( esc_html( get_post_meta( get_the_id(), "meta-box-music-lyric", true) ) );
+				if ($if_lyric != '') {
+				?>
+					<br />
+					<hr>
+					<h3>Lyrics</h3>
+					<?php echo $if_lyric; ?>
+				<?php } ?>
+			</div>
 		</div><!-- .entry-meta -->
 				
 		<?php endif; ?>

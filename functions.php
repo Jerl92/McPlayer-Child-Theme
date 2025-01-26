@@ -18,20 +18,24 @@
 		add_theme_support( 'music' );
 	}
 
-	function my_pre_get_posts($query) {
-		if( is_admin() ) 
-			return;
-	
-		if( is_search() && $query->is_main_query() ) {
-			$query->set('post_type', 'music');
-			$query->set('post_status', 'any');
-		} 
+	add_action('after_setup_theme', 'remove_admin_bar');
+	function remove_admin_bar() {
+		if (!current_user_can('administrator') && !is_admin()) {
+			show_admin_bar(false);
+		}
 	}
-	add_action( 'pre_get_posts', 'my_pre_get_posts' );
+
+	function attachment_search( $query ) {
+		if ( $query->is_search ) {
+		   $query->set( 'post_type', array( 'post', 'attachment', 'music' ) );
+		   $query->set( 'post_status', 'any' );
+		   $query->set( 'posts_per_page', 50 );
+		}
+	 
+	   return $query;
+	}
 	
-	/* ========================================
-	 * SEARCH CUSTOM POST TYPES
-	 * ======================================== */
+	add_filter( 'pre_get_posts', 'attachment_search' );
 	
 	function cf_search_join( $join ) {
 		global $wpdb;
@@ -115,4 +119,14 @@
 			return $http;
 		}
 	}
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'top-menu' => esc_html__( 'Top menu', 'chichi' ),
+	) );
+
+	function custom_login_redirect() {
+		return home_url();
+	}
+	add_filter('login_redirect', 'custom_login_redirect');
 ?>

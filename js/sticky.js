@@ -1,97 +1,141 @@
 
-function stickIt_($) {
-   
-    // Create a clone of the site-header, right next to original.
-    jQuery('.site-header').addClass('original').clone().insertAfter('.site-header').addClass('cloned').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
-    setInterval(stickIt, 1);
+function topmenu($){
+  $windowwidth = jQuery(window).width();
+  var header = jQuery("#wpadminbar").height();
 
-    function stickIt($) {
-
-      $wpAdminBar = jQuery("#wpadminbar");
-      $windowwidth = jQuery(window).width();
-      $wpAdminBarheight = jQuery("#wpadminbar").height();
-
-      if ($windowwidth >= 765) {
-        if (jQuery(window).scrollTop() > 0) {
-          // scrolled past the original position; now only show the cloned, sticky element.
-
-          // Cloned element should always have same left position and width as original element.   
-          if ($wpAdminBar.length) {
-            jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
-            jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-header').css('box-shadow', 'none');
-          } else {
-            jQuery('.cloned').css('top', 0).css('width', '100%').show();
-            jQuery('.cloned').css('display', 'fixed');
-            jQuery('.site-header').css('box-shadow', 'none');
-          }
-          jQuery('.site-title').css('font-size','1.75rem');
-        } else {
-          if ($wpAdminBar.length) {
-            // not scrolled past the site-header; only show the original site-header.
-            jQuery('.cloned').hide();
-            jQuery('.cloned').css('display', 'none');
-            jQuery('.site-content').css('padding-top', 0);
-            jQuery('.original').css('top', $wpAdminBarheight).css('width', '100%').show();
-            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
-          } else {
-            jQuery('.cloned').hide();
-            jQuery('.cloned').css('display', 'none');
-            jQuery('.site-content').css('padding-top', 0);
-            jQuery('.original').css('top', 0).css('width', '100%').show();
-            jQuery('.site-header').css('box-shadow', '0.05px 0.05px 15px rgb(0 0 0 / 15%)');
-          }
-          jQuery('.site-title').css('font-size','2rem');
-        }
-      }
-    }
-  }
-
-  jQuery(document).ready(function($) {
-    stickIt_($);
-  });
-
-  
-  function stickIt_resize($) {
-
-    $wpAdminBar = jQuery("#wpadminbar");
-    $windowwidth = jQuery(window).width();
-    $wpAdminBarheight = jQuery("#wpadminbar").height();
-
-    if ($windowwidth >= 765) {
+  if(header){
+    if ($windowwidth >= 720) {
       if (jQuery(window).scrollTop() > 0) {
-        // scrolled past the original position; now only show the cloned, sticky element.
-
-        // Cloned element should always have same left position and width as original element.   
-        if ($wpAdminBar.length) {
-          jQuery('.cloned').css('top', $wpAdminBarheight).css('width', '100%').show();
-          jQuery('.cloned').css('display', 'fixed');
-          jQuery('.original').hide();
-        } else {
-          jQuery('.cloned').css('top', 0).css('width', '100%').show();
-          jQuery('.cloned').css('display', 'fixed');
-          jQuery('.original').hide();
-        }
-        jQuery('.site-title').css('font-size','1.75rem');
+        jQuery('#masthead').css('top', '-135px');
       } else {
-        if ($wpAdminBar.length) {
-          // not scrolled past the site-header; only show the original site-header.
-          jQuery('.cloned').hide();
-          jQuery('.cloned').css('display', 'none');
-          jQuery('.site-content').css('padding-top', 0);
-          jQuery('.original').css('top', $wpAdminBarheight).css('width', '100%').show();
-        } else {
-          jQuery('.cloned').hide();
-          jQuery('.cloned').css('display', 'none');
-          jQuery('.site-content').css('padding-top', 0);
-          jQuery('.original').css('top', 0).css('width', '100%').show();
-        }
-        jQuery('.site-title').css('font-size','2rem');
+        jQuery('#masthead').css('top', '0px');
       }
     }
   }
+  if ($windowwidth >= 720) {
+    var masthead = jQuery("#masthead").height();
+    jQuery('#content').css('padding-top', masthead+'px');
+    jQuery('#masthead').css('position', 'fixed');
+    if (jQuery(window).scrollTop() > 0  ) {
+      jQuery('#masthead').addClass('fixed-header-nav');
+      jQuery('#masthead').css('padding','0');
+    } 
+    if (jQuery(window).scrollTop() == 0  ) {
+      jQuery('#masthead').removeClass('fixed-header-nav');
+      jQuery('#masthead').css('padding','15px 0 15px 0');
+    }
 
-  jQuery(window).resize(function($) {
-    stickIt_resize($);
-  });
+    if($(document).scrollTop() > 0) {
+      $('.site-title').stop().animate({
+          fontSize:'1.5rem',
+      },400);
+      $('.main-navigation').stop().animate({
+        paddingTop: '0px'
+    },400);
+    } else {
+      $('.site-title').stop().animate({
+        fontSize:'2rem',
+      },400);
+      $('.main-navigation').stop().animate({
+        paddingTop: '4px'
+      },400);
+    }
+  } else {
+    jQuery('#masthead').css('position', 'static');
+  }
+}
+   
+   jQuery(window).scroll(function(){
+      $windowwidth = jQuery(window).width();
+      var header = jQuery("#wpadminbar").height();
+
+      if(header){
+        if ($windowwidth >= 720) {
+          if (jQuery(window).scrollTop() > 0) {
+            jQuery('#masthead').css('top', '-135px');
+          } else {
+            jQuery('#masthead').css('top', '0px');
+          }
+        }
+      }
+      if ($windowwidth >= 720) {
+        var masthead = jQuery("#masthead").height();
+        jQuery('#content').css('padding-top', masthead+'px');
+        jQuery('#masthead').css('position', 'fixed');
+        if (jQuery(window).scrollTop() > 0  ) {
+          jQuery('#masthead').addClass('fixed-header-nav');
+          jQuery('#masthead').css('padding','0');
+        } 
+        if (jQuery(window).scrollTop() == 0  ) {
+          jQuery('#masthead').removeClass('fixed-header-nav');
+          jQuery('#masthead').css('padding','15px 0 15px 0');
+        }
+
+        if($(document).scrollTop() > 0) {
+          $('.site-title').stop().animate({
+              fontSize:'1.5rem',
+          },400);
+          $('.main-navigation').stop().animate({
+            paddingTop: '0px'
+        },400);
+        } else {
+          $('.site-title').stop().animate({
+            fontSize:'2rem',
+          },400);
+          $('.main-navigation').stop().animate({
+            paddingTop: '4px'
+          },400);
+        }
+      } else {
+        jQuery('#masthead').css('position', 'static');
+      }
+    });
+
+    jQuery(window).on('orientationchange resize', function (event) {
+      jQuery('#masthead').removeClass('fixed-header-nav');
+      jQuery('#content').removeClass('fixed-content-nav');
+      jQuery('.site-title').css('font-size','2rem');
+      jQuery('#masthead').css('padding','15px 0 15px 0');
+      $windowwidth = jQuery(window).width();
+      if ($windowwidth >= 720) {
+        var masthead = jQuery("#masthead").height();
+        jQuery('#content').css('padding-top', masthead+'px');
+        jQuery('#masthead').css('position', 'fixed');
+      } else {
+        jQuery('#content').css('padding-top', '0px');
+        jQuery('#masthead').css('position', 'static');
+      }
+    });
+  
+function topmenucontainer($){
+  $windowwidth = jQuery(window).width();
+  if ($windowwidth >= 720) {
+    jQuery('.top-navigation').css('width', 'auto');
+    jQuery('#top-menu-container').css('width', 'auto');
+    jQuery('#top-menu-container').css('float', 'right');
+  } else {
+    $topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
+    jQuery('#top-menu-container').css('float', 'right');
+  }
+}
+
+jQuery(document).ready(function($) {
+  topmenucontainer($);
+  topmenu($);
+});
+
+jQuery( window ).on( "resize", function() {
+  $windowwidth = jQuery(window).width();
+  if ($windowwidth >= 720) {
+    jQuery('.top-navigation').css('width', 'auto');
+    jQuery('#top-menu-container').css('width', 'auto');
+    jQuery('#top-menu-container').css('float', 'right');
+    
+  } else {
+    $topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
+    jQuery('#top-menu-container').css('float', 'right');
+  }
+} );

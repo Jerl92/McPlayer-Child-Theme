@@ -17,7 +17,7 @@
 	$getslugid = wp_get_post_terms( get_the_id(), 'artist' );	
 ?>
 
-<li class="rs-item-saved-for-later" id="rs-item-<?php echo get_the_id();?>">
+<li class="rs-item-saved-for-later" id="rs-item-<?php echo esc_attr(get_the_id());?>" data-object-id="<?php echo esc_attr(get_the_id());?>">
 	<div class="rs-item-content">
 		<div class="rs-item-cover">
 			<?php echo wp_get_attachment_image( get_post_meta( get_the_id(), "meta-box-media-cover_", true ), array('62.5', '62.5'), false, array('style' => 'max-width:100%;height:auto;') ); ?>
@@ -26,7 +26,7 @@
 			<?php foreach( $getslugid as $thisslug ) {
 				echo $thisslug->name; // Added a space between the slugs with . ' '
 			} ?>
-		<br /><?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?></div>
+		<br /><?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?> - <?php echo get_post_meta( get_the_id(), "meta-box-track-length", true ); ?></div>
 		<div class="rs-item-nav rs-item-nav-play-now">
 			<?php echo do_shortcode( '[play-now id="' . get_the_id() . '"]' ); ?>
 		</div>

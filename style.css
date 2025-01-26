@@ -11,13 +11,85 @@ Text Domain:	 chichi-child
 
 /* =Theme customization starts here
 ------------------------------------------------------- */
+
+body {
+    overflow-x: hidden;
+}
+
 .site-main {
     border-right: .5px solid rgba(0,0,0,.25);
 }
 
+.is-onstart{
+    -webkit-animation: 1s ease 0s normal forwards 1 fadein;
+    animation: 1s ease 0s normal forwards 1 fadein;
+}
+
+@keyframes fadein{
+    0% { opacity:1; }
+    50% { opacity:0.5; }
+    100% { opacity:0; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:1; }
+    50% { opacity:0.5; }
+    100% { opacity:0; }
+}
+
+.is-onready{
+    -webkit-animation: 1s ease 0s normal forwards 1 fadeout;
+    animation: 1s ease 0s normal forwards 1 fadeout;
+}
+
+@keyframes fadeout{
+    0% { opacity:0; }
+    50% { opacity:0.5; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadeout{
+    0% { opacity:0; }
+    50% { opacity:0.5; }
+    100% { opacity:1; }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 120px;
+    height: 20px;
+    -webkit-mask:linear-gradient(90deg,#000 70%,#0000 0) 0/20%;
+    background:
+     linear-gradient(#000 0 0) 0/0% no-repeat
+     #ddd;
+    animation: l4 2s infinite steps(6);
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+  @keyframes l4 {
+      100% {background-size:120%}
+  }
+
+.fixed-header-nav {
+    position: fixed;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    transition: .4s linear;
+    transform: translateY(0%);
+}
+
+.fixed-content-nav {
+    margin-top: 90px;
+}
+
 .wrap {
     max-width: 100%;
-    width: calc(100% - 20px);
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .made-with-love {
@@ -26,8 +98,12 @@ Text Domain:	 chichi-child
     float: right;
 }
 
+.site-content {
+    display: block;
+}
+
 #secondary {
-    display: table;
+    overflow-y: scroll !important;
 }
 
 #remove-all-btn a:visited, #remove-all-btn a:active, #remove-all-btn a:focus {
@@ -43,7 +119,7 @@ Text Domain:	 chichi-child
   /*  box-shadow: -0.1px -0.1px 25px rgba(0,0,0,.25); */
     background-color: #fff;
     z-index: 9999;
-    display: grid;
+    display: none;
     height: auto;
 }
 
@@ -61,6 +137,9 @@ Text Domain:	 chichi-child
     background-color: #fff;
     box-shadow: 0.05px 0.05px 15px rgba(0,0,0,.15);
     margin-bottom: 5px;
+    padding: 0 !important;
+    width: 100%;
+    z-index: 999;
 }
 
 .hide-player {
@@ -89,6 +168,16 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
     border: 1px solid rgba(0,0,0,.25);
 }
 
+.album-class-artist-img {
+    width: 350px;
+    float: right;
+    box-shadow: -10px 5px 25px rgba(0,0,0,.4);
+}
+
+.album-class-loop {
+    margin: 25px;
+}
+
 #album-class-artist-img:hover {
     border: .5px solid rgba(0,0,0,.5);
     opacity: 0.75;
@@ -97,7 +186,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 }       
 
 .search-field {
-    width: calc(100% - 100px);
+    width: calc(100% - 120px);
 }
 
 .edit-link {
@@ -122,6 +211,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
     background-color: #fff;
     z-index: 9999;
     width: 100% !important;
+    border-radius: 25px 25px 0 0;
 }
 
 .entry-meta-data-lyric {
@@ -131,6 +221,103 @@ button, input[type="button"], input[type="reset"], input[type="submit"], .btn, .
 
 a:focus {
     outline: none;
+}
+
+#lnamesave {
+    width: 75%;
+}
+
+.save-playlist {
+    width: 25%;
+}
+
+#mastheadtop {
+    display: list-item;
+    background-color: #000;
+}
+
+.top-navigation {
+    float: right;
+}
+
+.top-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 5px;
+	text-align: left;
+}
+
+.top-navigation ul a {
+    color: #fff;
+}
+
+#top-menu {
+    border: 0;
+    margin-bottom: 0;
+    padding: 0;
+    float: right;
+}
+
+#top-menu li {
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 0px 5px;
+}
+
+.memory-usage {
+    width: auto;
+    color: #fff;
+    float: left;
+    margin: 0 5px;
+}
+
+.pmpro_checkout-field {
+    width: 30%;
+    float: left;
+}
+
+.pmpro_checkout-field-bemail {
+    float: right;
+    margin-right: 10% !important;
+}
+
+#pmpro_message_bottom {
+    display: inline-table;
+    width: 100%;
+}
+
+form.pmpro_form .pmpro_member_profile_edit-fields > div {
+    width: 25%;
+    float: left;
+}
+
+form.pmpro_form input[type=text] {
+    width: 100%;
+}
+
+.wp-block-table td, .wp-block-table th {
+    border: none;
+}
+
+.topmenu:hover {
+    background-color: #86b854;
+}
+
+#top-menu-container {
+    width: auto;
+}
+
+@media screen and (min-width: 48em) {
+    .main-navigation {
+        width: auto;
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    #top-menu-container {
+        width: 100%;
+    }
 }
 
 @media only screen and (min-width: 765px) {
@@ -148,8 +335,8 @@ a:focus {
 
 @media only screen and (min-width: 631px) and (max-width: 1654px) {
     .page-music {
-        width: 19.45%;
-        padding: 0 0.25%;
+        width: 24.5%;
+        padding: 0 0 0 0.05%;
         display: inline-block;
     }
 }
@@ -199,6 +386,22 @@ a:focus {
         float: none;
         padding-bottom: 25px;
         padding-right: 0px;
+    }
+    .artist-banner-info {
+        text-align: center !important;
+        width: 100%;
+        display: block !important;
+    }
+    .album-class-loop-info {
+        text-align: center !important;
+        width: 100%;
+        display: block !important;        
+        max-width: 100% !important;
+    }
+    .album-class-artist-img {
+        float: none !important;
+        margin: auto !important;
+        display: table !important;
     }
 }
 

@@ -10,16 +10,16 @@
  */
 
 ?>
-                </div><!-- .wrap -->  
+            </div><!-- .wrap -->
                 <footer id="colophon" class="site-footer noselect" role="contentinfo">
                     <div class="wrap wrap-footer">  
                         <p class="made-with-love">
-                            <span>Fait avec <span class="heart">♥</span> Par <a href="http://jerl92.ca" style="color: #000" class="name" Target= "Blank">Jérémie Langevin</a></span>
+                            <span>Fait avec <span class="heart">♥</span> Par <a href="http://McPlayer.ca" style="color: #000" class="name" Target= "Blank">McPlayer</a></span>
                         </p>
                     </div><!-- .wrap -->
                 </footer><!-- #colophon -->    
-            </div><!-- .wrap -->
-        </div><!-- .wrap -->  
+        </div><!-- .wrap -->
+
         <div id="wrap-player" class="wrap wrap-footer noselect"> 
             <?php if ( is_active_sidebar( 'left-menu-widget' ) ) : ?> 
                 <div id="left-menu-widget" class="sidebar-container menu-off" role="complementary">

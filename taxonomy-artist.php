@@ -362,6 +362,9 @@ get_header(); ?>
 					echo "</table>";
 
 				echo "</div>";
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			comments_template_mcplayer(wp_get_attachment_url( $album_meta ));
 		
 			// the_posts_navigation();
 

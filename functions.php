@@ -129,4 +129,43 @@
 		return home_url();
 	}
 	add_filter('login_redirect', 'custom_login_redirect');
+
+	function comments_template_mcplayer($image_url) {
+		if($image_url != null){
+			$attachment_id = attachment_url_to_postid( $image_url ); 
+		} else {
+			$attachment_id = get_the_ID();
+		}
+		echo '<div id="comments" class="comments-area">';
+			echo '<div id="comments-wrapper">';
+				$args = array(
+					'post_id' => intval($attachment_id),
+					'orderby' => 'comment_date',
+					'order' => 'ASC'
+				);
+				$comments = get_comments($args);
+				foreach($comments as $comment){
+					echo '<div style="display:flex; padding-bottom:15px;" class="comment_ID_'.$comment->comment_ID.'">';
+						echo '<div style="width:95%;">';
+							echo $comment->comment_author;
+						echo '<br>';
+							echo $comment->comment_content;
+						echo '</div>';
+						if (intval($comment->user_id) === intval(user_if_login())){
+							echo '<div class="comment_delete" data-object-id="'.$comment->comment_ID.'">';
+								echo 'X';
+							echo '</div>';
+						}
+					echo '</div>';
+				}
+			echo '</div>';
+			echo '<div id="respond_comment" class="comment-respond">';
+				echo '<h3 id="reply-title" class="comment-reply-title">Laisser un commentaire <small><a rel="nofollow" id="cancel-comment-reply-link" href="" style="display:none;">Annuler la réponse</a></small></h3><form action="" method="post" id="commentform" class="comment-form" novalidate=""><p class="comment-notes"><span id="email-notes">Votre adresse courriel ne sera pas publiée.</span> <span class="required-field-message">Les champs obligatoires sont indiqués avec <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Commentaire <span class="required">*</span></label> <textarea id="comment_text" name="comment" cols="45" rows="8" maxlength="65525" required=""></textarea></p><p class="comment-form-author"><label for="author">Nom <span class="required">*</span></label> <input id="author_comment" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required=""></p>';
+				echo '<p class="comment-form-email"><label for="email">Courriel <span class="required">*</span></label> <input id="email_commnent" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required=""></p>';
+				echo '<p class="comment-form-url"><label for="url">Site web</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>';
+				echo '<p class="form-submit"><input name="submit" type="submit" id="submit_comment" class="submit" value="Laisser un commentaire"> <input type="hidden" name="comment_post_ID" value="'. $attachment_id .'" id="comment_post_ID">';
+				echo '</p></form>';
+			echo '</div><!-- #respond -->';
+		echo '</div>';
+	}
 ?>

@@ -152,9 +152,9 @@ get_header(); ?>
 						if ( $attachments ) {
 							foreach ( $attachments as $attachment ) {
 
-								$cover_loop = get_post_meta( $post->ID , 'meta-box-media-cover_' , true );
+								$cover_loop = get_post_meta( $attachment->ID , 'meta-box-media-cover_' , true );
 
-								$album_link = add_query_arg( 'album', esc_attr($attachment->ID ) , get_site_url() & '/mcplayer/artist/' & $cover_loop &  '/' );
+								$album_link = add_query_arg( 'album', esc_attr($attachment->ID) , get_site_url() & '/mcplayer/artist/' & $cover_loop &  '/' );
 									
 								$parsed = parse_url( wp_get_attachment_url( $attachment->ID ) );
 								$url    = dirname( $parsed [ 'path' ] ) . '/' . rawurlencode( basename( $parsed[ 'path' ] ) );
@@ -362,6 +362,9 @@ get_header(); ?>
 					echo "</table>";
 
 				echo "</div>";
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			comments_template_mcplayer(wp_get_attachment_url( $album_meta ));
 		
 			// the_posts_navigation();
 

@@ -1,11 +1,11 @@
 
 
 function topmenu($){
-  $windowwidth = jQuery(window).width();
+  windowwidth = jQuery(window).width();
   var header = jQuery("#wpadminbar").height();
 
   if(header){
-    if ($windowwidth >= 720) {
+    if (windowwidth >= 720) {
       if (jQuery(window).scrollTop() > 0) {
         jQuery('#masthead').css('top', '-135px');
       } else {
@@ -13,7 +13,7 @@ function topmenu($){
       }
     }
   }
-  if ($windowwidth >= 720) {
+  if (windowwidth >= 720) {
     var masthead = jQuery("#masthead").height();
     jQuery('#content').css('padding-top', masthead+'px');
     jQuery('#masthead').css('position', 'fixed');
@@ -26,18 +26,18 @@ function topmenu($){
       jQuery('#masthead').css('padding','15px 0 15px 0');
     }
 
-    if($(document).scrollTop() > 0) {
-      $('.site-title').stop().animate({
+    if(jQuery(document).scrollTop() > 0) {
+      jQuery('.site-title').stop().animate({
           fontSize:'1.5rem',
       },400);
-      $('.main-navigation').stop().animate({
+      jQuery('.main-navigation').stop().animate({
         paddingTop: '0px'
     },400);
     } else {
-      $('.site-title').stop().animate({
+      jQuery('.site-title').stop().animate({
         fontSize:'2rem',
       },400);
-      $('.main-navigation').stop().animate({
+      jQuery('.main-navigation').stop().animate({
         paddingTop: '4px'
       },400);
     }
@@ -47,11 +47,11 @@ function topmenu($){
 }
    
    jQuery(window).scroll(function(){
-      $windowwidth = jQuery(window).width();
+      windowwidth = jQuery(window).width();
       var header = jQuery("#wpadminbar").height();
 
       if(header){
-        if ($windowwidth >= 720) {
+        if (windowwidth >= 720) {
           if (jQuery(window).scrollTop() > 0) {
             jQuery('#masthead').css('top', '-135px');
           } else {
@@ -59,7 +59,7 @@ function topmenu($){
           }
         }
       }
-      if ($windowwidth >= 720) {
+      if (windowwidth >= 720) {
         var masthead = jQuery("#masthead").height();
         jQuery('#content').css('padding-top', masthead+'px');
         jQuery('#masthead').css('position', 'fixed');
@@ -72,18 +72,18 @@ function topmenu($){
           jQuery('#masthead').css('padding','15px 0 15px 0');
         }
 
-        if($(document).scrollTop() > 0) {
-          $('.site-title').stop().animate({
+        if(jQuery(document).scrollTop() > 0) {
+          jQuery('.site-title').stop().animate({
               fontSize:'1.5rem',
           },400);
-          $('.main-navigation').stop().animate({
+          jQuery('.main-navigation').stop().animate({
             paddingTop: '0px'
         },400);
         } else {
-          $('.site-title').stop().animate({
+          jQuery('.site-title').stop().animate({
             fontSize:'2rem',
           },400);
-          $('.main-navigation').stop().animate({
+          jQuery('.main-navigation').stop().animate({
             paddingTop: '4px'
           },400);
         }
@@ -97,8 +97,8 @@ function topmenu($){
       jQuery('#content').removeClass('fixed-content-nav');
       jQuery('.site-title').css('font-size','2rem');
       jQuery('#masthead').css('padding','15px 0 15px 0');
-      $windowwidth = jQuery(window).width();
-      if ($windowwidth >= 720) {
+      windowwidth = jQuery(window).width();
+      if (windowwidth >= 720) {
         var masthead = jQuery("#masthead").height();
         jQuery('#content').css('padding-top', masthead+'px');
         jQuery('#masthead').css('position', 'fixed');
@@ -109,14 +109,14 @@ function topmenu($){
     });
   
 function topmenucontainer($){
-  $windowwidth = jQuery(window).width();
-  if ($windowwidth >= 720) {
+  windowwidth = jQuery(window).width();
+  if (windowwidth >= 720) {
     jQuery('.top-navigation').css('width', 'auto');
     jQuery('#top-menu-container').css('width', 'auto');
     jQuery('#top-menu-container').css('float', 'right');
   } else {
-    $topmenuwidth = jQuery('#top-menu').width();
-    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
+    topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', topmenuwidth+15);
     jQuery('#top-menu-container').css('float', 'right');
   }
 }
@@ -127,15 +127,15 @@ jQuery(document).ready(function($) {
 });
 
 jQuery( window ).on( "resize", function() {
-  $windowwidth = jQuery(window).width();
-  if ($windowwidth >= 720) {
+  windowwidth = jQuery(window).width();
+  if (windowwidth >= 720) {
     jQuery('.top-navigation').css('width', 'auto');
     jQuery('#top-menu-container').css('width', 'auto');
     jQuery('#top-menu-container').css('float', 'right');
     
   } else {
-    $topmenuwidth = jQuery('#top-menu').width();
-    jQuery('#top-menu-container').css('width', $topmenuwidth+15);
+    topmenuwidth = jQuery('#top-menu').width();
+    jQuery('#top-menu-container').css('width', topmenuwidth+15);
     jQuery('#top-menu-container').css('float', 'right');
   }
 } );

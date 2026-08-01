@@ -211,8 +211,7 @@ get_header(); ?>
 												<?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?>
 												</br>
 												<?php echo $album_year; ?>
-			
-												</li>
+											</li>
 											<li style="float: right; margin: 25px 15px 0 0;">
 												<?php echo do_shortcode( '[simplicity-save-for-later-loop-album album_id="' . $attachment->ID . '"]' ); ?>
 											</li>
@@ -276,6 +275,7 @@ get_header(); ?>
 
 						foreach ( $get_songs as $get_songs_time ) {
 							$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
+							$get_songs_scores[$i++] =  get_post_meta(  $get_songs_time->ID , 'song_score_unique' , true );
 						}
 					}
 
@@ -299,6 +299,21 @@ get_header(); ?>
 									<span style="font-size: 20px; font-weight: 400;"><?php echo time_from_seconds ( array_sum($get_songs_calc) ); ?></span>
 									</br>
 									<span style="font-size: 20px; font-weight: 300;"><?php echo $album_year; ?></span>
+									</br>
+									<?php	
+										$i = 0;
+										$calcvalue = 0;
+										foreach ($get_songs_scores as $score_song) {
+											foreach ($score_song as $score) {
+												if($score[1] != ''){
+													$calcvalue = $calcvalue + $score[1];
+													$i++;
+												}
+											}
+										}
+										$get_songs_scores_calc = $calcvalue / $i;
+										echo number_format($get_songs_scores_calc, 2).'/5';
+									?>
 								</div>
 								<div class="album-class-img">
 									<img class="album-class-artist-img" src="<?php echo wp_get_attachment_url($album_meta); ?>"></img>
@@ -348,6 +363,23 @@ get_header(); ?>
 										<?php echo $if_feat; ?>
 									<br />
 									<?php } ?>
+							</td>
+							<td style="padding: 0 25px;">
+								<?php 
+								$i = 0;
+								$calcvalue = 0;
+								$song_score_uniques = get_post_meta($post[1], 'song_score_unique', true);
+								foreach($song_score_uniques as $key => $value){
+									$calcvalue = $calcvalue + $value[1];
+									$i++;
+								}
+								if($i == 0){
+									$calcvaluemayene = '';
+								} else {
+									$calcvaluemayene = $calcvalue / $i;
+								}
+								echo $calcvaluemayene;
+								?>
 							</td>
 							<td style="padding: 0 25px;">
 								<?php echo get_post_meta( $post[1], "count_play_loop", true); ?>

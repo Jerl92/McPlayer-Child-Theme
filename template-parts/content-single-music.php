@@ -55,6 +55,22 @@
 				<?php echo get_post_meta( $value, "meta-box-year", true); ?>
 				<br />
 				<?php echo get_post_meta( get_the_id(), "meta-box-track-length", true); ?>
+				<div class="song-unique-score">
+					<?php echo '<span class="userid" style="display: none;">'.user_if_login().'</span>'; ?>
+					<?php echo '<span class="postid" style="display: none;">'.get_the_id().'</span>'; ?>
+					<?php $song_score_uniques = get_post_meta(get_the_id(), 'song_score_unique', true);
+					if(is_array($song_score_uniques)){
+						 foreach($song_score_uniques as $score){
+						 	if (intval(user_if_login()) === intval($score[0])) {
+								echo '<input type="number" min="0" max="5" step="0.01" placeholder="0.00" value="'.$score[1].'" class="song-unique-score-input">';
+							}
+						 }
+					 } else {
+					 	echo '<input type="number" min="0" max="5" step="0.01" placeholder="0.00" class="song-unique-score-input">';
+					 }
+					 ?>
+					 <div class="newarray"></div>
+	    			</div>
 			</div>
 
 			<div class="entry-meta-cover">

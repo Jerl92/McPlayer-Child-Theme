@@ -57,6 +57,10 @@
 				<?php echo do_shortcode( '[add-play-now id="' . get_the_id() . '"]' ); ?>
 			</div>
 		</div>
+		
+		<div class="song-unique-score">
+			<input type="number" min="0" max="5" step="0.01" placeholder="0.00" class="song-unique-score-input">
+		</div>
 
 		<?php endif; ?>
 

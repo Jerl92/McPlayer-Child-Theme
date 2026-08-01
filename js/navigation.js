@@ -16,3 +16,7 @@ function scrolltosecondary($) {
 jQuery(document).ready(function($) {
 	scrolltosecondary($);
 });
+
+jQuery(function() {
+    jQuery('#wpadminbar').click();
+});

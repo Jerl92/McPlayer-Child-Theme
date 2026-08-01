@@ -324,6 +324,9 @@ form.pmpro_form input[type=text] {
     .cloned {
         position: fixed;
     }
+    .playlistscroll {
+        display: none !important;
+    }
 }
 
 @media only screen and (max-width: 764px) {

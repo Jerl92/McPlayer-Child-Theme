@@ -60,10 +60,15 @@
 					<?php echo '<span class="postid" style="display: none;">'.get_the_id().'</span>'; ?>
 					<?php $song_score_uniques = get_post_meta(get_the_id(), 'song_score_unique', true);
 					if(is_array($song_score_uniques)){
+						 $allready = 0;
 						 foreach($song_score_uniques as $score){
 						 	if (intval(user_if_login()) === intval($score[0])) {
+						 		$allready = 1;
 								echo '<input type="number" min="0" max="5" step="0.01" placeholder="0.00" value="'.$score[1].'" class="song-unique-score-input">';
 							}
+						 }
+						 if($allready == 0) {
+						 	echo '<input type="number" min="0" max="5" step="0.01" placeholder="0.00" class="song-unique-score-input">';
 						 }
 					 } else {
 					 	echo '<input type="number" min="0" max="5" step="0.01" placeholder="0.00" class="song-unique-score-input">';

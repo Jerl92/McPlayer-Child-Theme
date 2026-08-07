@@ -272,10 +272,12 @@ get_header(); ?>
 						
 						$i = 0; 
 						$get_songs_calc = [];
+						$get_songs_scores = [];
 
 						foreach ( $get_songs as $get_songs_time ) {
-							$get_songs_calc[$i++] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
-							$get_songs_scores[$i++] =  get_post_meta(  $get_songs_time->ID , 'song_score_unique' , true );
+							$get_songs_calc[$i] =  seconds_from_time( get_post_meta(  $get_songs_time->ID , 'meta-box-track-length' , true ));
+							$get_songs_scores[$i] =  get_post_meta(  $get_songs_time->ID , 'song_score_unique' , true );
+							$i++;
 						}
 					}
 
@@ -312,7 +314,17 @@ get_header(); ?>
 											}
 										}
 										$get_songs_scores_calc = $calcvalue / $i;
-										echo number_format($get_songs_scores_calc, 2).'/5';
+										$get_songs_scores_calc_round = number_format($get_songs_scores_calc, 2);
+										echo $get_songs_scores_calc_round.'/5';
+										echo '<br>';
+										$album_score_unique = get_post_meta( $album_meta, "album_score_unique", true );
+										$album_score_unique_end = end($album_score_unique);
+										$album_score_unique_clac = $get_songs_scores_calc_round - $album_score_unique_end[1];
+										if($album_score_unique_clac > 0){
+											echo '+'.$album_score_unique_clac;
+										} else {
+											echo $album_score_unique_clac;
+										}
 									?>
 								</div>
 								<div class="album-class-img">
@@ -342,7 +354,16 @@ get_header(); ?>
 					asort($posts);
 
 					if ($_GET['album'] != '') { 
-
+	
+						?><tr>
+						    <th></th>
+						    <th></th>
+						    <th>#</th>
+						    <th>Title</th>
+						    <th>Score</th>
+						    <th>Play</th>
+						    <th>Time</th>
+						</tr><?php
 						foreach($posts as $post) { ?>
 							<tr style='width: 100%; height: 60px;'>
 							<td id="album-class-artist-list-id-<?php echo $post[1]; ?>" style='text-align: center; width: 30px; padding: 0 15px;'>
@@ -364,7 +385,7 @@ get_header(); ?>
 									<br />
 									<?php } ?>
 							</td>
-							<td style="padding: 0 25px;">
+							<td style="padding: 0 10px;">
 								<?php 
 								$i = 0;
 								$calcvalue = 0;
@@ -378,10 +399,10 @@ get_header(); ?>
 								} else {
 									$calcvaluemayene = $calcvalue / $i;
 								}
-								echo $calcvaluemayene;
+								echo number_format($calcvaluemayene, 2);
 								?>
 							</td>
-							<td style="padding: 0 25px;">
+							<td style="padding: 0 20px;">
 								<?php echo get_post_meta( $post[1], "count_play_loop", true); ?>
 							</td>
 							<td style="">

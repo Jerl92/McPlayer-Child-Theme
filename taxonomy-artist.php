@@ -322,7 +322,9 @@ get_header(); ?>
 										$album_score_unique_clac = $get_songs_scores_calc_round - $album_score_unique_end[1];
 										if($album_score_unique_clac > 0){
 											echo '+'.$album_score_unique_clac;
-										} else {
+										} else if($album_score_unique_clac == 0){
+											echo '';
+										} else if($album_score_unique_clac < 0){
 											echo $album_score_unique_clac;
 										}
 									?>

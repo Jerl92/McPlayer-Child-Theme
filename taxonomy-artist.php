@@ -321,11 +321,11 @@ get_header(); ?>
 										$album_score_unique_end = end($album_score_unique);
 										$album_score_unique_clac = $get_songs_scores_calc_round - $album_score_unique_end[1];
 										if($album_score_unique_clac > 0){
-											echo '+'.$album_score_unique_clac;
+											echo '+'.number_format($album_score_unique_clac, 2);
 										} else if($album_score_unique_clac == 0){
 											echo '';
 										} else if($album_score_unique_clac < 0){
-											echo $album_score_unique_clac;
+											echo number_format($album_score_unique_clac, 2);
 										}
 									?>
 								</div>
@@ -358,8 +358,8 @@ get_header(); ?>
 					if ($_GET['album'] != '') { 
 	
 						?><tr>
-						    <th></th>
-						    <th></th>
+						    <th>Add</th>
+						    <th>Play</th>
 						    <th>#</th>
 						    <th>Title</th>
 						    <th>Score</th>

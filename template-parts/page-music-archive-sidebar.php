@@ -14,7 +14,18 @@
 	$cover_id = esc_attr( 'meta-box-media-cover_' );
 	$value = get_post_meta( get_the_id(), $cover_id, true );
 
-	$getslugid = wp_get_post_terms( get_the_id(), 'artist' );	
+	$getslugid = wp_get_post_terms( get_the_id(), 'artist' );
+	
+	$song_score_uniques = get_post_meta(  get_the_id() , 'song_score_unique' , true );
+	
+	$i = 0;
+	$song_score_unique_calc = 0;
+	foreach( $song_score_uniques as $song_score_unique ) {
+		$song_score_unique_calc = $song_score_unique_calc + $song_score_unique[1];
+		$i++;
+	} 
+	
+	$song_score_unique_calc_ = $song_score_unique_calc / $i;
 ?>
 
 <li class="rs-item-saved-for-later" id="rs-item-<?php echo esc_attr(get_the_id());?>" data-object-id="<?php echo esc_attr(get_the_id());?>">
@@ -26,7 +37,7 @@
 			<?php foreach( $getslugid as $thisslug ) {
 				echo $thisslug->name; // Added a space between the slugs with . ' '
 			} ?>
-		<br /><?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?> - <?php echo get_post_meta( get_the_id(), "meta-box-track-length", true ); ?></div>
+		<br /><?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?> - <?php echo get_post_meta( get_the_id(), "meta-box-track-length", true ); ?> - <?php echo number_format($song_score_unique_calc_, 2).'/5'; ?> - <?php echo get_post_meta( get_the_id(), "count_play_loop", true); ?></div>
 		<div class="rs-item-nav rs-item-nav-play-now">
 			<?php echo do_shortcode( '[play-now id="' . get_the_id() . '"]' ); ?>
 		</div>

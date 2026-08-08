@@ -29,15 +29,13 @@
 ?>
 
 <li class="rs-item-saved-for-later" id="rs-item-<?php echo esc_attr(get_the_id());?>" data-object-id="<?php echo esc_attr(get_the_id());?>">
-	<div class="rs-item-content">
+	<div class="rs-item-content" style="display: flex;">
 		<div class="rs-item-cover">
 			<?php echo wp_get_attachment_image( get_post_meta( get_the_id(), "meta-box-media-cover_", true ), array('62.5', '62.5'), false, array('style' => 'max-width:100%;height:auto;') ); ?>
 		</div>
-		<div class="rs-item-title"><a href="<?php echo get_the_permalink(); ?>" ><?php the_title(); ?></a> - 
-			<?php foreach( $getslugid as $thisslug ) {
-				echo $thisslug->name; // Added a space between the slugs with . ' '
-			} ?>
-		<br /><?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?> - <?php echo get_post_meta( get_the_id(), "meta-box-track-length", true ); ?> - <?php echo number_format($song_score_unique_calc_, 2).'/5'; ?> - <?php echo '<span class="count-play-loop-sidebar-'. get_the_id() .'">';?><?php echo get_post_meta( get_the_id(), "count_play_loop", true); ?></span></div>
+		<div class="rs-item-title">
+    		<a href="<?php echo get_the_permalink(); ?>" ><?php the_title(); ?></a> - <?php echo $getslugid[0]->name; ?> - <?php echo get_the_title($value); ?> - <?php echo get_post_meta( $value, "meta-box-year", true); ?> - <?php echo get_post_meta( get_the_id(), "meta-box-track-length", true ); ?> - <?php echo number_format($song_score_unique_calc_, 2).'/5'; ?> - <?php echo '<span class="count-play-loop-sidebar-'. get_the_id() .'">';?><?php echo get_post_meta( get_the_id(), "count_play_loop", true); ?></span>
+    	</div>
 		<div class="rs-item-nav rs-item-nav-play-now">
 			<?php echo do_shortcode( '[play-now id="' . get_the_id() . '"]' ); ?>
 		</div>

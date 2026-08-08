@@ -401,7 +401,7 @@ get_header(); ?>
 								} else {
 									$calcvaluemayene = $calcvalue / $i;
 								}
-								echo number_format($calcvaluemayene, 2);
+								echo number_format($calcvaluemayene, 2).'/5';
 								?>
 							</td>
 							<td style="padding: 0 20px;">

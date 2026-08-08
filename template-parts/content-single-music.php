@@ -55,6 +55,24 @@
 				<?php echo get_post_meta( $value, "meta-box-year", true); ?>
 				<br />
 				<?php echo get_post_meta( get_the_id(), "meta-box-track-length", true); ?>
+				<br />
+				
+				<?php
+				$i = 0;
+				$calcvalue = 0;
+				$song_score_uniques = get_post_meta(get_the_id(), 'song_score_unique', true);
+				foreach($song_score_uniques as $key => $value){
+					$calcvalue = $calcvalue + $value[1];
+					$i++;
+				}
+				if($i == 0){
+					$calcvaluemoyenne = '';
+				} else {
+					$calcvaluemoyenne = $calcvalue / $i;
+				}
+				echo '<span class="calcvaluemoyenne">'.number_format($calcvaluemoyenne, 2).'/5</span>';
+				?>
+				
 				<div class="song-unique-score">
 					<?php echo '<span class="userid" style="display: none;">'.user_if_login().'</span>'; ?>
 					<?php echo '<span class="postid" style="display: none;">'.get_the_id().'</span>'; ?>

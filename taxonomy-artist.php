@@ -405,7 +405,7 @@ get_header(); ?>
 								?>
 							</td>
 							<td style="padding: 0 20px;">
-								<?php echo get_post_meta( $post[1], "count_play_loop", true); ?>
+								<?php echo '<span class="count-play-loop-album-'.$post[1].'">'?><?php echo get_post_meta( $post[1], "count_play_loop", true); ?></span>
 							</td>
 							<td style="">
 								<?php echo get_post_meta( $post[1], "meta-box-track-length", true ); ?>
